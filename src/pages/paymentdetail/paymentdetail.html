@@ -1,0 +1,87 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"pmt_details" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-row class="order-steps">
+        <ion-col col-4 text-center class="done">
+            <h2>{{"shipping" | translate}}</h2>
+            <ion-icon name="md-card"></ion-icon>
+        </ion-col>
+        <ion-col col-4 text-center class="done">
+            <h2>{{"payments" | translate}}</h2>
+            <ion-icon class="" name="md-basket"></ion-icon>
+        </ion-col>
+        <ion-col col-4 text-center>
+            <h2>{{"confirm" | translate}}</h2>
+            <ion-icon name="md-checkbox"></ion-icon>
+        </ion-col>
+    </ion-row>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-list radio-group [(ngModel)]="payment_method_id" class="radio-button" name="case" required>
+                <ion-card-header>{{"ur_pmt_mthd" | translate}}</ion-card-header>
+                <ion-item *ngFor="let payment of payments">
+                    <ion-radio value="{{payment.id}}" (ionSelect)="paymentModeSelected(payment)" item-start></ion-radio>
+                    <ion-label>
+                        <h2 class="text-orange">{{payment.title}}</h2>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+            <div *ngIf="cardInfo" class="form">
+                <ion-list no-lines>
+                    <ion-item>
+                        <ion-label floating>{{'name_on_card' | translate}}</ion-label>
+                        <ion-input type="text" placeholder="" [(ngModel)]="cardInfo.name">
+                        </ion-input>
+                    </ion-item>
+                    <ion-row>
+                        <ion-col col-7>
+                            <ion-item>
+                                <ion-label floating>{{'card_number' | translate}}</ion-label>
+                                <ion-input type="text" maxlength="16" placeholder="" [(ngModel)]="cardInfo.number">
+                                </ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col col-5>
+                            <ion-item>
+                                <ion-label floating>{{'card_cvv' | translate}}</ion-label>
+                                <ion-input type="text" maxlength="3" placeholder="" [(ngModel)]="cardInfo.cvc">
+                                </ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6 class="">
+                            <ion-item>
+                                <ion-label floating>{{'card_month' | translate}}</ion-label>
+                                <ion-input type="text" maxlength="2" placeholder="" [(ngModel)]="cardInfo.expMonth">
+                                </ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label floating>{{'card_year' | translate}}</ion-label>
+                                <ion-input type="text" maxlength="2" placeholder="" [(ngModel)]="cardInfo.expYear">
+                                </ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-footer no-border>
+    <button ion-button no-margin icon-end class=" btn btn-orange" full (click)="confirmorder()">
+        {{"confirm_order" | translate}}
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+    </button>
+</ion-footer>

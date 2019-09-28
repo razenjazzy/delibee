@@ -1,0 +1,239 @@
+<ion-header class="bg-transparent">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+        </ion-title>
+        <span float-end>
+            <ion-icon *ngIf="user" name="md-heart" class="text-white" [ngClass]="{'favorite':favorite==1}" padding-right
+                (click)="toggleFavorite()"></ion-icon>
+            <span class="cart" (click)="cart()">
+                <ion-badge *ngIf="cartSize" class="">{{cartSize}}</ion-badge>
+                <ion-icon name="md-cart" class="text-white"></ion-icon>
+            </span>
+        </span>
+    </ion-navbar>
+    <div class="banner">
+        <div class="img-box">
+            <img [src]="store.image_url">
+        </div>
+        <div class="text">
+            <h2 class="text-white" text-center>{{store.name}}</h2>
+            <h3>{{store.tagline}}</h3>
+            <div class="reting">
+                <ion-icon name="md-star" [ngClass]="{'active':(store.ratings >= 1)}"></ion-icon>
+                <ion-icon name="md-star" [ngClass]="{'active':(store.ratings >= 2)}"></ion-icon>
+                <ion-icon name="md-star" [ngClass]="{'active':(store.ratings >= 3)}"></ion-icon>
+                <ion-icon name="md-star" [ngClass]="{'active':(store.ratings >= 4)}"></ion-icon>
+                <ion-icon name="md-star" [ngClass]="{'active':(store.ratings >= 5)}"></ion-icon>
+            </div>
+        </div>
+        <div class="ditails" padding-left padding-right>
+            <ion-row>
+                <ion-col col-4>
+                    <h2>{{"avg_dlvr_time" | translate}}</h2>
+                    <p>{{store.delivery_time}}</p>
+                </ion-col>
+                <ion-col col-4>
+                    <h2>{{"min_order" | translate}}</h2>
+                    <p>{{currency}} {{store.minimum_order}}</p>
+                </ion-col>
+                <ion-col col-4>
+                    <h2>{{"dlvr_fee" | translate}}</h2>
+                    <p>{{delivery_fee}}</p>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-header>
+<ion-content class="bg-light">
+    <div class="tab">
+        <ion-segment [(ngModel)]="chef">
+            <ion-segment-button value="cuisine">
+                {{"cuisine" | translate}}
+            </ion-segment-button>
+            <ion-segment-button value="review">
+                {{"reviews" | translate}}
+            </ion-segment-button>
+            <ion-segment-button value="info">
+                {{"info" | translate}}
+            </ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="chef">
+            <div *ngSwitchCase="'cuisine'">
+                <ion-list no-lines class="cuisine">
+                    <ion-item [ngClass]="{'active':category.active}" *ngFor="let category of categories;let i=index"
+                        (click)="tootgleCategory(i)">
+                        <h2>{{category.title}}
+                            <span class="text-orange">
+                                <ion-icon name="ios-arrow-down-outline" text-right>
+                                </ion-icon>
+                            </span>
+                        </h2>
+                        <div class="foods">
+                            <ion-list no-lines>
+                                <ion-item (click)="onlinemenu(item)" *ngFor="let item of category.items;let j=index">
+                                    <ion-thumbnail item-start>
+                                        <img [src]="item.image_url">
+                                    </ion-thumbnail>
+                                    <h2>{{item.title}}</h2>
+                                    <p>{{item.detail}}</p>
+                                    <h3 item-end>{{currency}} {{item.price}}<br>
+                                        <ion-icon name="md-add" class="add" *ngIf="!item.added"
+                                            (click)="addToCart(i,j);$event.stopPropagation()"></ion-icon>
+                                        <ion-icon name="ios-checkmark-circle-outline" class="add check"
+                                            *ngIf="item.added" (click)="removeCart(i,j);$event.stopPropagation()">
+                                        </ion-icon>
+                                    </h3>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <!--review start-->
+            <div *ngSwitchCase="'review'" class="review">
+                <p *ngIf="!loadingReview && (!ratings || !ratings.length)" text-center style="margin-top:20%">
+                    <ion-icon ios="ios-alert-outline"></ion-icon><br />
+                    <span>No reviews found at the moment</span>
+                </p>
+                <ion-list *ngIf="ratings && ratings.length" no-lines>
+                    <ion-item class="good-reting"
+                        [ngClass]="{'good-reting':rating.rating >= 3,'bad-reting':rating.rating < 3}"
+                        *ngFor="let rating of ratings">
+                        <ion-row>
+                            <ion-col>
+                                <h3 *ngIf="rating.user && rating.user.name">{{rating.user.name}}</h3>
+                                <h3 *ngIf="!(rating.user || rating.user.name)">George Timber</h3>
+                                <ion-badge item-end class="">{{rating.rating}}</ion-badge>
+                                <span class="retaing">
+                                    <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 1}"></ion-icon>
+                                    <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 2}"></ion-icon>
+                                    <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 3}"></ion-icon>
+                                    <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 4}"></ion-icon>
+                                    <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 5}"></ion-icon>
+                                </span>
+                            </ion-col>
+                        </ion-row>
+                        <p>{{rating.review}}</p>
+                        <h5 text-end class="">{{rating.created_at}}</h5>
+                    </ion-item>
+                    <!-- <ion-item class="bad-reting">
+            <ion-row>
+              <ion-col col-6>
+                  <h3>George Timber</h3>
+                  <ion-badge item-end class="">1.2</ion-badge>
+                  <span class="retaing">
+                    <ion-icon name="md-star" class="active"></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                    <ion-icon name="md-star" class=""></ion-icon>
+                    <ion-icon name="md-star"></ion-icon>
+                  </span>
+              </ion-col>
+              <ion-col col-6>
+                <h4 text-right>Very Bad quality of packing</h4>
+              </ion-col>
+            </ion-row>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+            </p>
+            <h5 text-right class="text-light">5 April,17</h5>
+          </ion-item> -->
+                </ion-list>
+            </div>
+            <!--review end-->
+
+            <!--info start-->
+            <div *ngSwitchCase="'info'" class="info">
+                <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light">Area</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2>{{store.area}}</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light">Status</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2 [ngClass]="{'text-green':store.status=='open','favorite':store.status!='open'}">
+                            {{store.status}}</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light">Delivery Time</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2>{{store.delivery_time}}</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light">{{"min_order" | translate}}</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2>{{currency}} {{store.minimum_order}}</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light">{{"dlvr_fee" | translate}}</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2>{{currency}} {{store.delivery_fee}}</h2>
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col col-6>
+                        <h2 class="text-light"> Pre Order</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <h2 *ngIf="store.preorder==1">Yes</h2>
+                        <h2 *ngIf="store.preorder!=1">No</h2>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="payment">
+                    <ion-col col-6>
+                        <h2 class="text-light">Payment Method</h2>
+                    </ion-col>
+                    <ion-col col-6 text-capitalize>
+                        <img src="assets/imgs/credit-card.png">
+                        <img src="assets/imgs/debit-card.png">
+                        <img src="assets/imgs/wallet.png" class="wallet">
+                    </ion-col>
+                </ion-row> -->
+            </div>
+            <!--info end-->
+        </div>
+    </div>
+</ion-content>
+<ion-footer no-border>
+    <!--
+<button ion-button icon-end (click)="cart()" full large>
+
+    <span item-end class="price">
+
+    </span>
+</button>
+-->
+    <ion-row (click)="cart()">
+        <ion-col col-7>
+            <ion-icon name="md-cart" class="text-white">
+                <ion-badge color="secondary">{{cartSize}}</ion-badge>
+            </ion-icon>
+            <h3>
+                {{"cart_items" | translate}}
+            </h3>
+        </ion-col>
+        <ion-col col-5 text-end>
+            <h4>
+                <span>{{currency}} {{cartTotal}}</span>
+                <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+            </h4>
+        </ion-col>
+    </ion-row>
+</ion-footer>

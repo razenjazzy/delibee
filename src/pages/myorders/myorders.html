@@ -1,0 +1,92 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"my_orders" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="empty-view" *ngIf="!isLoading && (!orders || !orders.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/ic_placeholder.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_orders' | translate}}</span>
+        </div>
+    </div>
+    <ion-list>
+        <div *ngFor="let order of orders">
+            <ion-card class="restro-detail">
+                <ion-item>
+                    <ion-avatar text-end item-start (click)="order.open=!order.open">
+                        <h3>{{order.main_date | date:'dd' }}<br>{{order.main_date | date:'MMM' }}</h3>
+                    </ion-avatar>
+                    <div class="name" (click)="order.open=!order.open">
+                        <h2 class="text-dark">{{order.store.name}}</h2>
+                        <p class="">{{order.store.area}}, {{order.store.address}}</p>
+                    </div>
+                    <div class="status" text-end>
+                        <h2 class="text-dark">{{currency}} {{order.total}}</h2>
+                        <ion-badge class="bg-green" text-capitalize
+                            *ngIf="order.status=='complete' && !isRated(order.id,order.store.id)"
+                            (click)="giveReview(order)">
+                            Review
+                        </ion-badge>
+                        <ion-badge class="bg-orange" text-capitalize (click)="showRejectReason(order)">{{order.status}}</ion-badge>
+                    </div>
+                </ion-item>
+            </ion-card>
+            <div class="trak" *ngIf="order.open">
+                <ion-row>
+                    <ion-col [ngClass]="{'active':order.trakingNumber>=0}" center text-center>
+                        <p class="text-light">{{"placed" | translate}}</p>
+                        <ion-icon name="done-all" class="text-white"></ion-icon>
+                    </ion-col>
+                    <ion-col [ngClass]="{'active':order.trakingNumber>=1}" center text-center>
+                        <p class="text-light">{{"preparing" | translate}}</p>
+                        <ion-icon name="restaurant" class="text-white"></ion-icon>
+                    </ion-col>
+                    <ion-col [ngClass]="{'active':order.trakingNumber>=2}" center text-center>
+                        <p class="text-light">{{"dispatched" | translate}}</p>
+                        <ion-icon name="md-bicycle" class="text-white"></ion-icon>
+                    </ion-col>
+                    <ion-col [ngClass]="{'active':order.trakingNumber>=3}" center text-center
+                        (click)="trackOrder(order)">
+                        <p class="text-light">{{"track" | translate}}</p>
+                        <ion-icon name="home" class="text-white"></ion-icon>
+                    </ion-col>
+                    <ion-col [ngClass]="{'active':order.trakingNumber>=4}" center text-center>
+                        <p class="text-light">{{"delivered" | translate}}</p>
+                        <ion-icon name="home" class="text-white"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-card class="slip" *ngIf="order.open">
+                <ion-card-content>
+                    <h2 class="" *ngFor="let item of order.orderitems">{{item.menuitem.title}} ({{item.quantity}})
+                        <small>{{item.quantity}} x {{currency}} {{item.menuitem.price}}</small>
+                        <span class="bold">{{currency}} {{item.total}}</span>
+                    </h2>
+                    <div class="total">
+                        <p><small text-end>{{"sub_total" | translate}}</small> <span text-end>{{currency}}
+                                {{order.subtotal}}</span></p>
+                        <p><small text-end>{{"service_fee" | translate}}</small> <span text-end>{{currency}}
+                                {{order.taxes}}</span></p>
+                        <p><small text-end>{{"dlvr_fee" | translate}}</small> <span text-end>{{currency}}
+                                {{order.delivery_fee}}</span></p>
+                        <p *ngIf="order.discount"><small text-endtext-end>{{"discount" | translate}}</small> <span
+                                text-end>- {{currency}}
+                                {{order.discount}}</span></p>
+                    </div>
+                    <div class="grend-total " padding-top padding-bottom>
+                        <h2 class="text-orange">{{"cod_payble" | translate}}<span class="bold">{{currency}}
+                                {{order.total}}</span></h2>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

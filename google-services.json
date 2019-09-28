@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "175133208389",
+    "firebase_url": "https://delibee-acfc0.firebaseio.com",
+    "project_id": "delibee-acfc0",
+    "storage_bucket": "delibee-acfc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175133208389:android:40b284fa73affb52",
+        "android_client_info": {
+          "package_name": "com.delibee.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175133208389-7vamn7tuuemgtupiobnnmnopn7fse3nm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.delibee.app",
+            "certificate_hash": "33fb6eef8e76c1dae882f51634ee081d4fe1a783"
+          }
+        },
+        {
+          "client_id": "175133208389-6la29vj3suksjhiutsp2v0dk866veard.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGUMARNiiEgN6GZgbF9WUXFzKWIubLXoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175133208389-6la29vj3suksjhiutsp2v0dk866veard.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<ion-content class="bg-light">
+    <div class="code">
+        <h2>{{"add_promo" | translate}}
+            <ion-icon name="ios-close-circle-outline" (click)="dismiss()"></ion-icon>
+        </h2>
+        <ion-input type="text" value="" [(ngModel)]="cCode" placeholder="Enter promo code"></ion-input>
+        <button ion-button block class="btn btn-orange" (click)="checkCode()">{{"submit" | translate}}</button>
+    </div>
+</ion-content>

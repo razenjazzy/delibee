@@ -1,0 +1,2 @@
+alias: delibee
+password: delibee

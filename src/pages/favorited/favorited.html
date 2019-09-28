@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"favorites" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="empty-view" *ngIf="!isLoading && (!stores || !stores.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/ic_placeholder.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_orders' | translate}}</span>
+        </div>
+    </div>
+    <div class="near-rest">
+        <ion-list>
+            <ion-card (click)="chefdetail(store.store)" *ngFor="let store of stores;let i=index">
+                <div class="img">
+                    <ion-badge class="fw-3"
+                        [ngClass]="{'bg-orange':store.store.favourite==1,'bg-green':store.store.favourite!=1}">
+                        {{store.store.ratings}}</ion-badge>
+                    <div class="img-box">
+                        <img data-src="{{store.store.image_url}}">
+                    </div>
+                </div>
+                <ion-card-content>
+                    <ion-card-title class="text-white fw-5">
+                        <span>{{store.store.name}}</span>
+                        <ion-icon name="md-heart" class="text-white"
+                            [ngClass]="{'text-orange':store.store.favourite==1,'text-white':store.store.favourite!=1}"
+                            (click)="toggleFavorite(i);$event.stopPropagation();"></ion-icon>
+                    </ion-card-title>
+                    <p class="fw-3">{{store.store.area}}</p>
+                </ion-card-content>
+                <ion-row>
+                    <ion-col col-4>
+                        <h5 class="text-light">{{"avg_dlvr_time" | translate}}</h5>
+                        <h6 class="text-dark">{{store.store.delivery_time}}</h6>
+                    </ion-col>
+                    <ion-col col-4>
+                        <h5 class="text-light">{{"min_order" | translate}}</h5>
+                        <h6 class="text-dark">{{currency}} {{store.store.minimum_order}}</h6>
+                    </ion-col>
+                    <ion-col col-4>
+                        <h5 class="text-light">{{"dlvr_fee" | translate}}</h5>
+                        <h6 class="text-dark">{{currency}} {{store.store.delivery_fee}}</h6>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+        </ion-list>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+</ion-content>

@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"cart" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="empty-view" *ngIf="!cartItems || !cartItems.length">
+        <div style="text-align:center">
+            <img src="assets/imgs/ic_placeholder.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_cart' | translate}}</span>
+        </div>
+    </div>
+
+    <h2 *ngIf="cartItems && cartItems.length" class="heading">{{"ur_order" | translate}}</h2>
+
+    <ion-list *ngIf="cartItems && cartItems.length" no-lines>
+        <ion-item *ngFor="let item of cartItems">
+            <ion-thumbnail item-start>
+                <img [src]="item.item.image_url">
+            </ion-thumbnail>
+            <h3>{{item.item.title}}</h3>
+            <ion-row>
+                <ion-col col-5>
+                    <div class="add-remove">
+                        <ion-icon name="md-remove" class="" (click)="decrementItem(item.item)"></ion-icon>
+                        <h2 text-center>{{item.quantity}}</h2>
+                        <ion-icon name="md-add" class="" (click)="incrementItem(item.item)"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col col-7>
+                    <p class="text-light"><span>x</span> {{currency}} {{item.priceBase}}</p>
+                </ion-col>
+            </ion-row>
+            <h3 text-right item-end>{{currency}} {{item.priceTotal}}
+                <br>
+                <ion-icon name="md-trash" class="text-orange" (click)="removeItem(item.item)"></ion-icon>
+            </h3>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar *ngIf="cartItems && cartItems.length">
+        <div class="fixd-bottom">
+            <div class="ditails">
+                <p text-center class="text-green" (click)="codePage()">{{"hav_promo" | translate}}</p>
+                <h2 class="sub-total">{{"sub_total" | translate}} <span>{{currency}} {{subTotal}}</span></h2>
+                <h2>{{"service_fee" | translate}}
+                    <span *ngIf="service" style="margin-left:5px">({{tax_in_percent}}%)</span>
+                    <span>{{currency}} {{totalServiceFee}}</span>
+                </h2>
+                <h2 *ngIf="delivery_fee && delivery_fee > 0">{{"dlvr_fee" | translate}}
+                    <span>{{currency}} {{delivery_fee}}</span>
+                </h2>
+                <h2 *ngIf="couponApplied">{{"coupon_applied" | translate}}
+                    <span>- {{currency}} {{couponAmount}}</span>
+                </h2>
+            </div>
+            <button ion-button full class="btn-orange btn" (click)="proceedCheckout()">
+                <span class="cart">
+                    <ion-icon name="md-cart" class="text-white"></ion-icon>
+                    <ion-badge>{{cartItems.length}}</ion-badge>
+                </span>
+                <span class="f-3 checkout_text">{{"checkout" | translate}}</span>
+                <span class="amount f-3"><strong>{{currency}} {{total}}</strong>
+                    <ion-icon name="ios-arrow-forward-outline" text-end></ion-icon>
+                </span>
+            </button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"my_reviews" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="empty-view" *ngIf="!isLoading && (!reviews || !reviews.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/ic_placeholder.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_reviews' | translate}}</span>
+        </div>
+    </div>
+    <ion-list no-lines>
+        <ion-item *ngFor="let review of reviews" [ngClass]="review.rating >= 3 ? 'good-reting' : 'bad-reting'">
+            <ion-row>
+                <ion-col>
+                    <h3 *ngIf="review.store && review.store.name">{{review.store.name}}</h3>
+                    <h3 *ngIf="!(review.store || review.store.name)">Red Chilly Chef</h3>
+                    <!-- <h3 class="text-green">Red Chilly Chef</h3> -->
+                    <ion-badge item-end class="">{{review.rating}}</ion-badge>
+                    <span class="retaing">
+                        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 1}"></ion-icon>
+                        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 2}"></ion-icon>
+                        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 3}"></ion-icon>
+                        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 4}"></ion-icon>
+                        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 5}"></ion-icon>
+                    </span>
+                </ion-col>
+            </ion-row>
+            <p>{{review.review}}</p>
+            <h5 text-end>{{review.created_at}}</h5>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

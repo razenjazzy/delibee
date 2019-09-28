@@ -1,0 +1,29 @@
+page-address {
+    .footer {
+        .button {
+            height: 55px;
+        }
+    }
+
+    .form {
+        width: 100%;
+        max-width: unset;
+    }
+
+    .location_box {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        h4 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .button {
+            margin-left: auto;
+            color: white;
+        }
+    }
+}

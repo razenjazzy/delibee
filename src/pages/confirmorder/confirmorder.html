@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"confirm_order" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="bg-light">
+    <ion-row class="order-steps">
+        <ion-col col-4 text-center class="done">
+            <h2>{{"shipping" | translate}}</h2>
+            <ion-icon class="" name="md-basket"></ion-icon>
+        </ion-col>
+        <ion-col col-4 text-center class="done">
+            <h2>{{"payments" | translate}}</h2>
+            <ion-icon name="md-card"></ion-icon>
+        </ion-col>
+        <ion-col col-4 text-center class="done">
+            <h2>{{"confirm" | translate}}</h2>
+            <ion-icon name="md-checkbox"></ion-icon>
+        </ion-col>
+    </ion-row>
+    <div class="slip-box">
+        <div class="top-border"></div>
+        <ion-card class="slip">
+            <ion-card-content>
+                <h1>{{store.name}}
+                    <small>{{store.area}}, {{store.address}}</small>
+                </h1>
+                <h3 class="bold text-orange">{{"order_details" | translate}}</h3>
+                <h2 class="" *ngFor="let order of cartItems">{{order.item.title}} ({{order.quantity}})
+                    <small>{{order.quantity}} x {{currency}} {{order.priceBase}} </small>
+                    <span class="">{{currency}} {{order.priceTotal}} </span>
+                </h2>
+                <div class="total">
+                    <p text-end>
+                        <small>{{"sub_total" | translate}}</small>
+                        <span>{{currency}} {{subTotal}}</span>
+                    </p>
+                    <p text-end>
+                        <small>{{"service_fee" | translate}} ({{tax_in_percent}}%)</small>
+                        <span>{{currency}} {{totalServiceFee}}</span>
+                    </p>
+                    <p *ngIf="delivery_fee && delivery_fee > 0" text-end>
+                        <small>{{"dlvr_fee" | translate}}</small>
+                        <span>{{currency}} {{delivery_fee}}</span>
+                    </p>
+                    <p *ngIf="couponApplied" text-end>
+                        <small>{{"coupon_applied" | translate}}</small>
+                        <span>- {{currency}} {{couponAmount}}</span>
+                    </p>
+                </div>
+                <div class="grend-total ">
+                    <h2 class="text-orange">{{"payble_amt" | translate}}<span class="bold">{{currency}} {{total}}</span>
+                    </h2>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+<ion-footer no-border>
+    <button ion-button no-margin icon-end full class="btn btn-orange" (click)="createOrder()">{{"checkout" | translate}}
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+    </button>
+</ion-footer>
