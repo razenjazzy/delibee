@@ -1,0 +1,89 @@
+page-raterestro {
+    .header {
+        .toolbar {
+            .bar-button .button-inner ion-icon {
+                color: darken($gray, 100%) !important;
+            }
+
+            .toolbar-content {
+                .toolbar-title {
+                    color: darken($gray, 100%) !important;
+                }
+            }
+        }
+    }
+
+    .img-box {
+        img {
+            width: 270px;
+            margin-top: 12px;
+            margin-bottom: 18px;
+        }
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.9rem;
+    }
+
+    .retaing {
+        margin-top: 29px;
+
+        ion-icon {
+            margin: 0 4px;
+            font-size: 5rem;
+            color: lighten($gray, 30%);
+
+            &.active {
+                color: $theme-color;
+            }
+        }
+    }
+
+    .list {
+        margin-bottom: 0;
+        padding: 20px 32px 0 32px;
+
+        .item {
+            margin-bottom: 10px;
+            padding: 0;
+
+
+            .label {
+                margin: 0;
+            }
+
+            .item-inner {
+                padding: 0;
+            }
+
+            textarea {
+                width: 100%;
+                padding: 13px 20px 0 20px;
+                border: none;
+                border-radius: 10px;
+                background: lighten($gray, 35%);
+                height: 51px;
+                font-size: 1.3rem;
+            }
+
+            &.experience {
+                textarea {
+                    height: 111px !important;
+                }
+            }
+        }
+    }
+
+    .btn-box {
+        padding: 0 32px;
+
+        .button {
+            &.btn {
+                height: 5.3rem;
+                font-size: 1.9rem;
+                background: $theme-color_green;
+            }
+        }
+    }
+}

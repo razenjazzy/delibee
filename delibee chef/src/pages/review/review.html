@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"reviews" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="empty-view" *ngIf="!isLoading && (!reviews || !reviews.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/no-order.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_reviews' | translate}}</span>
+        </div>
+    </div>
+    <ion-list no-lines>
+        <ion-item class="" *ngFor="let review of reviews">
+
+            <h3 class="">{{review.store.name}}
+                <span>{{review.store.name}}</span>
+            </h3>
+            <div class="rate_review">
+                <ion-badge>{{review.user.name}}</ion-badge>
+                <span class="retaing">
+                    <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 1}"></ion-icon>
+                    <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 2}"></ion-icon>
+                    <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 3}"></ion-icon>
+                    <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 4}"></ion-icon>
+                    <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 5}"></ion-icon>
+                </span>
+            </div>
+            <p>{{review.review}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

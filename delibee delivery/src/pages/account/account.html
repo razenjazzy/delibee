@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"account" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list no-lines>
+        <ion-item (click)="profile()">
+            <ion-icon item-start name="md-person" class="text-green"></ion-icon>
+            <h2>{{"profile" | translate}}</h2>
+        </ion-item>
+        <ion-item (click)="bankdatails()">
+            <ion-icon item-start class="text-green"><img src="assets/imgs/bank.png"></ion-icon>
+            <h2>{{"bank_details" | translate}}</h2>
+        </ion-item>
+        <ion-item (click)="contact()">
+            <ion-icon item-start name="md-mail" class="text-green"></ion-icon>
+            <h2>{{"support" | translate}}</h2>
+        </ion-item>
+        <ion-item (click)="phonenumberPage()">
+            <ion-icon item-start name="md-exit" class="text-green"></ion-icon>
+            <h2>{{"logout" | translate}}</h2>
+        </ion-item>
+    </ion-list>
+</ion-content>

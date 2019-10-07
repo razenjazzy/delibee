@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"profile" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="form">
+        <h2 padding-top>{{"personal_details" | translate}}</h2>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{"full_name" | translate}}</ion-label>
+                <ion-input type="text" value="{{user.name}}" readonly="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"email" | translate}}</ion-label>
+                <ion-input type="text" value="{{user.email}}" readonly="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"phone" | translate}}</ion-label>
+                <ion-input type="text" value="{{user.mobile_number}}" readonly="true"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!-- <div class="fixd-bottom">
+    <button ion-button round full margin-bottom class="btn-orange btn-shadow btn">{{"update_info" | translate}}</button>
+  </div> -->
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div class="fixd-bottom">
+            <button ion-button full round margin-bottom class="btn-orange btn-shadow btn">{{"update_info" | translate}}</button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

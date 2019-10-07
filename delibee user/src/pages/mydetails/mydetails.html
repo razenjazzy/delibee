@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"my_details" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-card>
+        <h2>{{"personal_details" | translate}}
+            <!-- <ion-icon name="md-create" class="text-light create" float-end></ion-icon> -->
+        </h2>
+        <div class="form">
+            <ion-list no-lines padding-bottom>
+                <ion-item>
+                    <ion-label floating>{{"name" | translate}}</ion-label>
+                    <ion-input value="{{user.name}}" type="text" readonly="true"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"email" | translate}}</ion-label>
+                    <ion-input value="{{user.email}}" type="text" readonly="true"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"phone" | translate}}</ion-label>
+                    <ion-input value="{{user.mobile_number}}" type="text" readonly="true"></ion-input>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-card>
+    <ion-card class="address">
+        <div class="empty-view" *ngIf="!isLoading && (!addresses || !addresses.length)">
+            <div style="text-align:center">
+                <img src="assets/imgs/ic_placeholder.png" alt="no offers" />
+                <span style="color:#9E9E9E; font-weight:bold;">{{'empty_addresses' | translate}}</span>
+            </div>
+        </div>
+        <ion-list>
+            <h2 *ngIf="addresses && addresses.length">{{"ur_saved_address" | translate}}</h2>
+            <ion-item *ngFor="let address of addresses" (click)="addressPage(address)">
+                <ion-label>
+                    <strong class="text-orange">{{address.title}}</strong>
+                    <ion-icon name="md-create" class="text-light create" float-end></ion-icon>
+                    <p class="text-light fw-3" style="font-size: 1.3rem">{{address.address}} </p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
+<ion-footer no-border>
+    <p text-center class="text-orange" (click)="addressPage(null)">
+        <ion-icon name="md-add-circle" class="text-orange"></ion-icon>
+        <strong>{{"add_nw_address" | translate}}</strong>
+    </p>
+</ion-footer>

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"items" | translate}}</ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="query" (ionChange)="onSegmentChange()">
+    <ion-segment-button value="approved">
+      {{"approved_items" | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="pending">
+      {{"pending_items" | translate}}
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content class="bg-light">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{'pull_refresh' | translate}}"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="empty-view" *ngIf="!isLoading && (!toShow || !toShow.length)">
+    <div style="text-align:center">
+      <img src="assets/imgs/no-order.png" alt="no offers" />
+      <span style="color:#9E9E9E; font-weight:bold;">{{'empty_items' | translate}}</span>
+    </div>
+  </div>
+  <div class="items-box">
+    <div [ngClass]="query=='approved' ? 'approved' : ''">
+      <ion-list>
+        <ion-card *ngFor="let item of toShow" (click)="itemdetails(item)">
+          <div class="img">
+            <div class="img-box">
+              <img [src]="item.image_url" />
+            </div>
+          </div>
+          <ion-row>
+            <ion-col col-7>
+              <h2 class="text-ellipsis">{{item.title}} <br>
+                <span>{{item.specification}}</span>
+              </h2>
+            </ion-col>
+            <ion-col col-5>
+              <ion-row *ngIf="query=='approved'">
+                <ion-col col-6>
+                  <p class="text-ellipsis">{{"price" | translate}} <br><span>{{currency}} {{item.price}}</span></p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="text-ellipsis">{{"available?" | translate}}<br>
+                    <span>
+                      <ion-toggle [(ngModel)]="item.available" (ngModelChange)="updateItem(item)"></ion-toggle>
+                    </span>
+                  </p>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="query!='approved'">
+                <ion-col col-12>
+                  <p class="text-ellipsis">{{"status" | translate}} <br>
+                    <span [ngClass]="item.status=='pending' ? 'pendind' : 'rejected'" text-capitalize>
+                      {{item.status}}
+                    </span>
+                  </p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-list>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="fixd-bottom">
+    <h2 class="text-white bg-orange" text-center (click)="additem()">+</h2>
+  </div>
+</ion-footer>

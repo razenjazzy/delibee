@@ -1,0 +1,105 @@
+page-mydetails {
+    .card {
+        width: auto;
+        margin: 0;
+        box-shadow: none;
+        margin-top: 10px;
+        padding: 16px 0px;
+
+        h2 {
+            padding: 0 23px;
+            font-weight: 500;
+            padding-bottom: 20px;
+            color: darken($gray, 10%) !important;
+        }
+
+        .form {
+            width: calc(100% - 53px);
+            max-width: unset;
+
+            .item-label-floating .text-input {
+                margin-top: 0;
+            }
+        }
+
+        &.address {
+            margin-bottom: 10px;
+
+            .item {
+                padding: 0 26px;
+                border: none !important;
+
+                .item-inner {
+                    display: block;
+                    padding-right: 0;
+
+                    .input-wrapper {
+                        .label {
+                            margin-right: 0;
+                            margin-left: 0rem;
+
+                            p {
+                                white-space: normal;
+                                line-height: 20px;
+                                margin-bottom: 16px;
+                                margin-top: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .text-light {
+        color: darken($gray, 0%) !important;
+
+        &.create {
+            color: #c6c6c6 !important;
+        }
+    }
+
+    .empty-view {
+        width: 200px;
+        margin: auto;
+        height: 156px;
+        top: unset;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        img {
+            width: 100px;
+            margin: auto;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 50px;
+
+            span {
+                display: unset !important;
+            }
+        }
+    }
+
+    .footer {
+        box-shadow: 0 10px 32px 9px rgba(0, 0, 0, 0.1);
+
+        p {
+            font-size: 1.5rem;
+            padding: 20px 0;
+            background: $white;
+            margin: 0;
+
+            strong {
+                font-weight: 500;
+            }
+        }
+    }
+}

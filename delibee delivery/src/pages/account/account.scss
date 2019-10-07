@@ -1,0 +1,40 @@
+page-account {
+    .list {
+        margin-top: 35px;
+
+        .item {
+            padding: 0;
+            min-height: unset;
+            padding: 5px 27px 5px 27px;
+            margin-bottom: 20px;
+
+            ion-icon {
+                margin: 0 !important;
+                font-size: 2.4rem;
+                color: $theme-color_green;
+                position: relative;
+                //top: 7px;
+                margin-right: 27px !important;
+
+                img {
+                    width: 20px;
+                }
+            }
+
+            .item-inner {
+                padding: 0;
+                margin: 0;
+
+                .label {
+                    margin: 0;
+
+                    h2 {
+                        font-size: 1.8rem;
+                        color: darken($gray, 100%);
+                    }
+                }
+            }
+
+        }
+    }
+}

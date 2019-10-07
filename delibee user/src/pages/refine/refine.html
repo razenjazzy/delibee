@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"refine" | translate}}
+            <span>
+                <ion-icon name="ios-refresh-outline" text-right (click)="resetRefine()"></ion-icon>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-card padding-left padding-right padding-top>
+        <ion-list radio-group no-lines [(ngModel)]="veg_only">
+            <h2>{{"type_food" | translate}} </h2>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-radio value="0" item-start></ion-radio>
+                        <ion-label>{{"veg_nonveg" | translate}}</ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-radio value="1" item-start></ion-radio>
+                        <ion-label>{{"veg_only" | translate}}</ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </ion-card>
+
+    <ion-card padding-left padding-right padding-top>
+        <ion-list radio-group no-lines [(ngModel)]="price_sort">
+            <h2> {{"price_sort" | translate}} </h2>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-radio value="0" item-start></ion-radio>
+                        <ion-label>Low To high</ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-item>
+                        <ion-radio value="1" item-start></ion-radio>
+                        <ion-label>High To low</ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </ion-card>
+
+    <ion-card padding-left padding-right padding-top>
+        <ion-list radio-group no-lines>
+            <h2> {{"price_range" | translate}} </h2>
+            <ion-item>
+                <ion-range min="1" max="1000" dualKnobs="true" pin="true" [(ngModel)]="structure" (ionChange)="setRange(structure)" color="dark">
+                    <span range-left>{{"min" | translate}}</span>
+                    <span range-right>{{"max" | translate}}</span>
+                </ion-range>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <div class="fixd-bottom">
+        <button class="btn btn-orange" ion-button full (click)="applyFilter()">{{"apply_filters" | translate}}</button>
+    </div>
+</ion-footer>

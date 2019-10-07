@@ -1,0 +1,88 @@
+page-refine {
+    .card {
+        margin: 13px auto;
+        border-radius: 7px;
+        width: calc(100% - 15px);
+        padding-bottom: 7px;
+        box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.49);
+
+        h2 {
+            padding: 5px 8px;
+            color: darken($gray, 20%);
+            font-size: 1.45rem;
+        }
+
+        .list {
+            .item {
+                padding-left: 20px;
+
+                .radio[item-start] {
+                    margin: 0 !important;
+
+                    .radio-icon {
+                        border-color: lighten($gray, 20%) !important;
+
+                        &.radio-checked {
+                            border-color: $theme-color !important;
+
+                            .radio-inner {
+                                background: $theme-color !important;
+                            }
+                        }
+                    }
+                }
+
+                .label {
+                    padding-left: 0 !important;
+                    margin: 0;
+                    margin-left: 15px !important;
+                    font-size: 1.5rem;
+                    color: darken($gray, 30%);
+                }
+
+                //                    &.item-radio-checked {
+                //                    .label {
+                //                        color: $theme-color;
+                //                    }
+                //                }
+                ion-range {
+                    padding-top: 20px;
+                    padding-bottom: 23px;
+
+                    [range-left],
+                    [range-right] {
+                        position: absolute;
+                        bottom: 17px;
+                    }
+
+                    [range-right] {
+                        right: 0;
+                    }
+                }
+
+                .range-bar-active,
+                .range-pin,
+                .range-pin::before,
+                .range-knob {
+                    background: $theme-color !important;
+                }
+            }
+        }
+    }
+
+    .col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+        .item-inner {
+            padding-right: 0 !important;
+        }
+    }
+
+    .fixd-bottom {
+        .btn {
+            margin: 0;
+            height: 5.8rem;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<ion-header class="bg-transparent">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{"rate_review" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="img-box" text-center>
+        <img src="assets/imgs/reting-logo.png">
+    </div>
+    <h2 text-center>{{"rate_review" | translate}}</h2>
+    <h2 text-center>{{order.store.name}}</h2>
+    <div class="retaing" text-center>
+        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 1}" (click)="review.rating=1"></ion-icon>
+        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 2}" (click)="review.rating=2"></ion-icon>
+        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 3}" (click)="review.rating=3"></ion-icon>
+        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 4}" (click)="review.rating=4"></ion-icon>
+        <ion-icon name="md-star" [ngClass]="{'active':review.rating >= 5}" (click)="review.rating=5"></ion-icon>
+    </div>
+    <ion-list no-lines>
+        <ion-item class="review-heading">
+            <textarea type="text" placeholder="{{'review_title' | translate}}"></textarea>
+        </ion-item>
+        <ion-item class="experience">
+            <textarea type="text" placeholder="{{'review_text' | translate}}" [(ngModel)]="review.review"
+                (ngModelChange)="validate()"></textarea>
+        </ion-item>
+    </ion-list>
+    <div class="btn-box">
+        <button ion-button round full class="btn" margin-bottom
+            (click)="postReview()">{{"rate_nw" | translate}}</button>
+    </div>
+</ion-content>

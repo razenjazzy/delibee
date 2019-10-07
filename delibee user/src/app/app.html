@@ -1,0 +1,91 @@
+<ion-menu [side]="rtlSide" [content]="content" id="myMenu">
+    <ion-header class="home-menu">
+        <div class="logo-menu"> <img src="assets/imgs/logo.png">
+            <ion-item *ngIf="user">
+                <h2 class="text-white">{{"hey" | translate}} {{user.name}}</h2>
+                <p>{{user.mobile_number}}</p>
+            </ion-item>
+            <ion-item *ngIf="!user">
+                <h2 class="text-white">{{"hey" | translate}} {{"guest" | translate}}</h2>
+                <!-- <p>{{user.mobile_number}}</p> -->
+            </ion-item>
+        </div>
+    </ion-header>
+    <ion-content>
+        <ion-list no-lines>
+            <ion-item menuClose (click)="home()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="ios-home"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"home" | translate}}</h2>
+                <p>{{"list_restaurants" | translate}}</p>
+            </ion-item>
+            <ion-item *ngIf="user" menuClose (click)="myorders()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-restaurant"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"my_orders" | translate}}</h2>
+                <p>{{"current_past_orders" | translate}}</p>
+            </ion-item>
+            <ion-item menuClose (click)="mydetails()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-contact"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"my_details" | translate}}</h2>
+                <p>{{"my_details_info" | translate}}</p>
+            </ion-item>
+            <ion-item *ngIf="user" menuClose (click)="favorited()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-heart"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"favorites" | translate}}</h2>
+                <p>{{"favorites_list" | translate}}</p>
+            </ion-item>
+            <ion-item *ngIf="user" menuClose (click)="review()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="ios-film"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"reviews" | translate}}</h2>
+                <p>{{"reviews_list" | translate}}</p>
+            </ion-item>
+            <!-- <ion-item menuClose (click)="contactus()">
+        <ion-avatar item-start text-center>
+            <ion-icon name="md-call"></ion-icon>
+        </ion-avatar>
+        <h2 class="text-white">{{"contact_us" | translate}}</h2>
+        <p>List of reviews</p>
+      </ion-item> -->
+            <ion-item *ngIf="user" menuClose (click)="contactus()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-text"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"support" | translate}}</h2>
+                <p>{{"support_text" | translate}}</p>
+            </ion-item>
+            <ion-item menuClose (click)="raterestro()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-thumbs-up"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"rate" | translate}}</h2>
+                <p>{{"rate_text" | translate}}</p>
+            </ion-item>
+            <ion-item menuClose (click)="language()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-cog"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"language" | translate}}</h2>
+                <p>{{"language_text" | translate}}</p>
+            </ion-item>
+            <ion-item *ngIf="user" menuClose (click)="phonenumberPage()">
+                <ion-avatar item-start text-center>
+                    <ion-icon name="md-power"></ion-icon>
+                </ion-avatar>
+                <h2 class="text-white">{{"logout" | translate}}</h2>
+                <p>{{"logout_text" | translate}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" [class]="deviceModel" type="overlay"></ion-nav>

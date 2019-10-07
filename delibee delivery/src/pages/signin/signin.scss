@@ -1,0 +1,149 @@
+page-signin {
+    .segment {
+        position: relative;
+        padding-top: 7px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            width: calc(100% - 32px);
+            height: 3px;
+            display: block;
+            background: lighten($gray, 37%);
+            margin: auto;
+        }
+
+        .segment-button {
+            position: relative;
+            font-size: 1.7rem;
+            height: 5rem;
+            text-transform: none;
+            color: #ababab;
+            border-bottom: none;
+            font-weight: 400;
+
+            &.segment-activated {
+                border-bottom: none;
+                color: darken($gray, 100%);
+                font-weight: 500;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
+                    right: 0;
+                    width: 100px;
+                    height: 3px;
+                    display: block;
+                    background: $theme-color_green;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+    .form {
+        .list {
+            ion-avatar {
+                button {
+                    .button-inner {
+                        ion-icon {
+                            padding: 0;
+                            color: lighten($gray, 20%);
+                        }
+                    }
+                }
+            }
+
+            .item-select {
+                padding-top: 10px;
+
+                .select {
+                    padding: 0;
+                    max-width: unset;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    margin-top: 21px;
+
+                    .select-text {
+                        text-overflow: unset;
+                        font-size: 1.5rem;
+
+                        &.select-placeholder {
+                            color: darken($gray, 5%);
+                            font-weight: 300 !important;
+                        }
+                    }
+
+                    .select-icon {
+                        width: 16px;
+
+                        .select-icon-inner {
+                            color: darken($gray, 100%);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .signin {
+            .list {
+                padding-top: 10px;
+            }
+
+            .bottom-side {
+                margin: 0;
+                margin-top: 24px;
+
+                .row {
+                    margin: 0;
+
+                    .col {
+                        text-align: center;
+
+                        img {
+                            width: 30px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .signin,
+        .register {
+            .row {
+                .col {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    p {
+        small {
+            color: $theme-color;
+            font-size: 1.2rem
+        }
+    }
+
+    .row {
+        align-items: center;
+        margin: 0 -7px;
+
+        .col {
+            p {
+                color: darken($gray, 50%);
+            }
+
+            .row {
+                margin: 0;
+            }
+        }
+    }
+}

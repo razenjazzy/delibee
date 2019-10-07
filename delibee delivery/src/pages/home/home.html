@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"home" | translate}}
+            <span>
+                <span *ngIf="!online">{{"offline" | translate}}</span>
+                <span *ngIf="online">{{"online" | translate}}</span>
+                <ion-toggle [(ngModel)]="online" (ngModelChange)="toggleOnline()"></ion-toggle>
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="map">
+        <div #pleaseConnect id="please-connect">
+            <p>{{'loading' | translate}}</p>
+        </div>
+        <div #map id="map">
+            <ion-spinner></ion-spinner>
+        </div>
+    </div>
+
+    <div class="fixd-bottom bg-light">
+        <ion-list no-lines>
+            <ion-list-header>
+                <ion-row>
+                    <ion-col col-4 text-center>
+                        <h2 class="time text-ellipsis">
+                            <ion-icon name="md-time"></ion-icon> -- --
+                        </h2>
+                    </ion-col>
+                    <ion-col col-4 text-center>
+                        <h2 class="text-ellipsis">
+                            <ion-icon name="md-navigate"></ion-icon> {{distance}} km
+                        </h2>
+                    </ion-col>
+                    <ion-col col-4 class="bg-orange" text-center>
+                        <h2 *ngIf="order" class="text-white delivery" (click)="updateOrder()">
+                            <span *ngIf="order.delivery_status=='allotted'">
+                                {{"start_delivery" | translate}}
+                            </span>
+                            <span *ngIf="order.delivery_status=='started'">
+                                {{"complete_delivery" | translate}}
+                            </span>
+                        </h2>
+                        <h2 *ngIf="!order" text-capitalize (click)="online = true; toggleOnline();">
+                            {{"refresh" | translate}}
+                        </h2>
+                    </ion-col>
+                </ion-row>
+            </ion-list-header>
+            <ion-item *ngIf="order">
+                <ion-avatar *ngIf="(order.delivery_status && order.delivery_status == 'started')" item-start>
+                    <img [src]="order.user.image_url" *ngIf="order && order.user && order.user.image_url"
+                        (click)="showImage(order.user.image_url)">
+                    <img src="./assets/imgs/logo.png" *ngIf="!order || !order.user || !order.user.image_url">
+                </ion-avatar>
+                <ion-avatar *ngIf="!(order.delivery_status && order.delivery_status == 'started')" item-start>
+                    <img [src]="order.store.image_url" *ngIf="order && order.store"
+                        (click)="showImage(order.store.image_url)">
+                    <img src="./assets/imgs/logo.png" *ngIf="!order || !order.store">
+                </ion-avatar>
+                <h2 *ngIf="(order.delivery_status && order.delivery_status == 'started')" class="text-ellipsis">
+                    {{order.user.name}}
+                </h2>
+                <h2 *ngIf="!(order.delivery_status && order.delivery_status == 'started')" class="text-ellipsis">
+                    {{order.store.name}}
+                </h2>
+                <p>{{"order" | translate}} #{{order.id}} | {{order.updated_at}}</p>
+                <h3 class="text-ellipsis">
+                    <ion-icon name="md-restaurant" class="text-white bg-green"></ion-icon>
+                    {{order.store.area}}, {{order.store.address}}
+                </h3>
+                <h3 class="text-ellipsis">
+                    <ion-icon name="md-home" class="text-white bg-green"></ion-icon>
+                    {{order.address.address}}
+                </h3>
+                <h5 class="text-orange text-ellipsis" item-end text-capitalize>{{order.status}}</h5>
+            </ion-item>
+            <ion-label color="twitter" text-center *ngIf="!order"> {{"no_order" | translate}}</ion-label>
+        </ion-list>
+    </div>
+</ion-content>

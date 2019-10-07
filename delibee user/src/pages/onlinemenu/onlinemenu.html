@@ -1,0 +1,68 @@
+<ion-header class="bg-transparent ">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="banner">
+        <div class="img-box">
+            <img [src]="item.image_url">
+        </div>
+    </div>
+    <ion-card no-lines>
+        <ion-card-header>
+            <h4>{{item.title}}</h4>
+            <span>{{currency}} {{priceToShow}}</span>
+        </ion-card-header>
+        <p>{{item.detail}}</p>
+    </ion-card>
+
+    <ion-list *ngIf="item.menu_item_groups && item.menu_item_groups.length" no-lines class="option">
+        <ion-card *ngFor="let group of item.menu_item_groups" no-lines class="" radio-group
+            [(ngModel)]="group.singleChoiceId">
+            <ion-card-header class="text-orange">
+                {{group.title}}
+            </ion-card-header>
+            <ion-item *ngFor="let choice of group.menu_item_choices">
+                <ion-checkbox *ngIf="group.max_choices != 1" [(ngModel)]="choice.selected" (ionChange)="choiceEvent()"
+                    item-start></ion-checkbox>
+                <ion-radio *ngIf="group.max_choices == 1" (ionSelect)="choiceEvent()" item-start value="{{choice.id}}">
+                </ion-radio>
+                <ion-label>{{choice.title}}<span>+{{currency}}{{choice.price}}</span>
+                </ion-label>
+            </ion-item>
+        </ion-card>
+    </ion-list>
+
+    <ion-card no-lines class="instruction">
+        <ion-card-header class="text-orange">
+            {{"special_info" | translate}}
+        </ion-card-header>
+
+        <ion-item>
+            <textarea type="text" placeholder="{{item.specification}}" readonly="true"></textarea>
+        </ion-item>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div class="fixd-bottom">
+            <ion-row>
+                <ion-col col-5>
+                    <div class="add-remove">
+                        <ion-icon name="md-remove" class="bg-green" (click)="quantDown()"></ion-icon>
+                        <h2 text-center>{{quantity}}</h2>
+                        <ion-icon name="md-add" class="bg-green" (click)="quantUp()"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col col-7>
+                    <button ion-button round full class="btn-orange  btn "
+                        (click)="addToCart()">{{"add2order" | translate}}</button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,88 @@
+<ion-content>
+    <div class="logo bg-img">
+        <img src="assets/imgs/logo.png">
+    </div>
+
+    <ion-segment [(ngModel)]="login">
+        <ion-segment-button value="signin">
+            {{"login" | translate}}
+        </ion-segment-button>
+        <ion-segment-button value="register">
+            {{"register" | translate}}
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="login" class="form">
+        <div *ngSwitchCase="'signin'" class="signin">
+            <ion-list no-lines>
+                <ion-item>
+                    <ion-label floating>{{"email" | translate}}</ion-label>
+                    <ion-input type="email" [(ngModel)]="signInRequest.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"password" | translate}}</ion-label>
+                    <ion-input [type]="passwordType" [(ngModel)]="signInRequest.password"></ion-input>
+                    <ion-avatar item-end (click)="showHidePassword()" style="margin:0">
+                        <button ion-button round icon-only clear small>
+                            <ion-icon [name]="passwordIcon" class="text-light"></ion-icon>
+                        </button>
+                    </ion-avatar>
+                </ion-item>
+
+                <p text-end class="text-orange" (click)="forgotpassword()" padding-top padding-bottom margin-bottom>
+                    <small>
+                        {{"forgot_password" | translate}}
+                    </small>
+                </p>
+                <button ion-button round full margin-bottom class="btn-orange btn-shadow btn" (click)="requestSignIn()">
+                    {{"login" | translate}}
+                </button>
+            </ion-list>
+        </div>
+
+        <div *ngSwitchCase="'register'" class="register">
+            <ion-list no-lines>
+                <ion-item>
+                    <ion-label floating>{{"full_name" | translate}}</ion-label>
+                    <ion-input type="text" [(ngModel)]="signUpRequest.name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>{{"email" | translate}}</ion-label>
+                    <ion-input type="email" [(ngModel)]="signUpRequest.email"></ion-input>
+                </ion-item>
+                <ion-row>
+                    <ion-col col-6 padding-right>
+                        <ion-item>
+                            <ion-label floating>{{"password2" | translate}}</ion-label>
+                            <ion-input type="password" [(ngModel)]="signUpRequest.password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 padding-left>
+                        <ion-item>
+                            <ion-label floating>{{"confirm" | translate}}</ion-label>
+                            <ion-input type="password" [(ngModel)]="passwordConfirm"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-item>
+                    <ion-select [(ngModel)]="countryCode" interface="popover" class="text-thime"
+                        placeholder="{{'select_country' | translate}}">
+                        <ion-option [value]="country.callingCodes[0]" *ngFor="let country of countries">{{country.name}}
+                        </ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>{{"phone_2" | translate}}</ion-label>
+                    <ion-input type="tel" [(ngModel)]="phoneNumber"></ion-input>
+                </ion-item>
+            </ion-list>
+            <button ion-button round full class="btn-orange btn-shadow btn " margin-bottom
+                (click)="validateSignupForm()">
+                {{"register_nw" | translate}}
+            </button>
+        </div>
+    </div>
+</ion-content>
