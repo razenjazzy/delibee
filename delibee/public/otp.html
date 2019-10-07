@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <style type="text/css">
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+  margin: 0px; 
+  padding: 0px; 
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+}
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5,h6 {
+  margin: 0px;
+}
+
+p {
+  font-family: Ubuntu-Bold;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+}
+
+ul, li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+
+/*---------------------------------------------*/
+input {
+  outline: none;
+  border: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+input::-webkit-input-placeholder { color: #bdbdd3;}
+input:-moz-placeholder { color: #bdbdd3;}
+input::-moz-placeholder { color: #bdbdd3;}
+input:-ms-input-placeholder { color: #bdbdd3;}
+
+textarea::-webkit-input-placeholder { color: #bdbdd3;}
+textarea:-moz-placeholder { color: #bdbdd3;}
+textarea::-moz-placeholder { color: #bdbdd3;}
+textarea:-ms-input-placeholder { color: #bdbdd3;}
+
+/*---------------------------------------------*/
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+iframe {
+  border: none !important;
+}
+
+
+/*---------------------------------------------*/
+.container {
+  max-width: 1200px;
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Contact ]*/
+
+.container-contact100 {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  background-color: #c2c2c2;
+}
+
+.wrap-contact100 {
+  width: 550px;
+  background: transparent;
+  padding: 50px 0px 160px 0px;
+}
+
+
+/*==================================================================
+[ Form ]*/
+
+.contact100-form {
+  width: 100%;
+}
+
+.contact100-form-title {
+  display: block;
+  font-family: Ubuntu-Bold;
+  font-size: 30px;
+  color: #403866;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 49px;
+}
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.wrap-input100 {
+  width: 100%;
+  background-color: #fff;
+  border-color: #000;
+  border-radius: 31px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.input100 {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #fff;
+  border-radius: 31px;
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  color: #8f8fa1;
+  line-height: 1.2;
+}
+
+
+/*---------------------------------------------*/
+input.input100 {
+  height: 62px;
+  padding: 0 35px 0 35px;
+}
+
+
+textarea.input100 {
+  min-height: 169px;
+  padding: 19px 35px 0 35px;
+}
+
+/*------------------------------------------------------------------
+[ Focus Input ]*/
+
+.focus-input100 {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 31px;
+  background-color: #fff;
+  pointer-events: none;
+  
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 {
+  width: calc(100% + 20px);
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.container-contact100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.contact100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 150px;
+  height: 62px;
+  background-color: transparent;
+  border-radius: 31px;
+
+  font-family: Ubuntu-Bold;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+.contact100-form-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 31px;
+  background-color: #827ffe;
+  pointer-events: none;
+  
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.contact100-form-btn:hover:before {
+  background-color: #403866;
+  width: calc(100% + 20px);
+}
+
+
+
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.validate-input {
+  position: relative;
+}
+
+.alert-validate::before {
+  content: attr(data-validate);
+  position: absolute;
+  z-index: 1000;
+  max-width: 70%;
+  background-color: #fff;
+  border: 1px solid #c80000;
+  border-radius: 14px;
+  padding: 4px 25px 4px 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 10px;
+  pointer-events: none;
+
+  font-family: Ubuntu-Bold;
+  color: #c80000;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+  content: "\f06a";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  z-index: 1100;
+  color: #c80000;
+  font-size: 16px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 16px;
+}
+
+.alert-validate:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+  <div id="sign-in-button"></div>
+  <div class="container-contact100">
+    <div class="wrap-contact100">      
+        <span class="contact100-form-title">
+          Enter the code your recieved
+        </span>
+
+        <div class="wrap-input100 validate-input">
+          <input class="input100" type="text" name="code" placeholder="OTP" id="code">
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" onclick="verify()">
+            <span>              
+              Verify OTP
+            </span>
+          </button>
+        </div>
+        <div class="container-contact100-form-btn" id="resend-button" style="display: none;">
+          <button class="contact100-form-btn">
+            <span>             
+              Resend OTP
+            </span>
+          </button>
+        </div>
+    </div>
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#config-web-app -->
+ 
+ <script>
+  setupResendButton();
+
+  var phoneNumber = '+' + getUrlParameter('mobile');
+
+  var result = getUrlParameter('result'); // so that code don't run when we reload
+
+  if(!result) {
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDBZjAUb_BqMgaE6ZanWXaSgWP_VX-NynQ",
+      authDomain: "delibee-acfc0.firebaseapp.com",
+      databaseURL: "https://delibee-acfc0.firebaseio.com",
+      projectId: "delibee-acfc0",
+      storageBucket: "",
+      messagingSenderId: "175133208389",
+      appId: "1:175133208389:web:c214d2df63d173d8"
+    }; 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);  
+    
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': function(response) {
+      // reCAPTCHA solved, allow signInWithPhoneNumber.
+      //onSignInSubmit();
+    }
+    });
+    
+    var appVerifier = window.recaptchaVerifier;
+
+    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then(function (confirmationResult) {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;      
+      }).catch(function (error) {
+        window.recaptchaVerifier.render().then(function(widgetId) {
+          grecaptcha.reset(widgetId);
+        });
+        window.location = window.location.href + '&result=failed';
+      });
+  }
+
+    // verify code entered by user
+  function verify() {
+    code = $("#code").val();
+    if(!code) {
+      alert("Enter OTP");
+      return;
+    }
+    confirmationResult.confirm(code).then(function (result) {
+      // User signed in successfully.
+      var user = result.user;
+      window.location = window.location.href + '&result=success';
+    }).catch(function (error) {
+      console.log("after");
+      console.log(error);
+      window.location = window.location.href + '&result=failed';
+    });
+  }
+
+  function setupResendButton() {
+    setTimeout(function() {
+      $("#resend-button").show();
+    }, 120*1000);
+  }
+
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+</script>
+</body>
+</html>
