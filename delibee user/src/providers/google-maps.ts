@@ -38,9 +38,9 @@ export class GoogleMaps {
           let script = document.createElement("script");
           script.id = "googleMaps";
           if (this.config.googleApiKey) {
-            script.src = 'http://maps.google.com/maps/api/js?key=' + this.config.googleApiKey + '&callback=mapInit&libraries=places';
+            script.src = 'http://maps.google.com/maps/api/js?key=' + this.config.googleApiKey + '&callback=initAutocomplete&libraries=places';
           } else {
-            script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
+            script.src = 'http://maps.google.com/maps/api/js?callback=initAutocomplete';
           }
           document.body.appendChild(script);
         }
@@ -64,7 +64,7 @@ export class GoogleMaps {
       let latLng = new google.maps.LatLng(23.8103, 90.4125);
       let mapOptions = {
         center: latLng,
-        zoom: 9,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       this.map = new google.maps.Map(this.mapElement, mapOptions);

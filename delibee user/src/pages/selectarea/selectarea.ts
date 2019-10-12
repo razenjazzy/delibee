@@ -40,6 +40,7 @@ export class SelectareaPage {
       let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement).then(() => {
         this.autocompleteService = new google.maps.places.AutocompleteService();
         this.placesService = new google.maps.places.PlacesService(this.maps.map);
+        this.places.autocompleteService 
         this.searchDisabled = false;
         this.maps.map.addListener('click', (event) => {
           if (event && event.latLng) {
@@ -114,11 +115,13 @@ export class SelectareaPage {
 
   searchPlace() {
     this.saveDisabled = true;
+    this.autocompleteService.getPlacePredictions
     if (this.query.length > 0 && !this.searchDisabled) {
       let config = {
         types: ['geocode'],
         location: new google.maps.LatLng(23.8103, 90.4125),
         radius: 22000,
+        componentRestrictions: { country: 'bd' },
         input: this.query
       }
       this.autocompleteService.getPlacePredictions(config, (predictions, status) => {

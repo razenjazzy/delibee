@@ -22,7 +22,13 @@
     <ion-icon name="ios-options" class="text-light filter" (click)="refine()"></ion-icon>
   </div>
 </ion-header>
-<ion-content class="bg-light">
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher>
+
   <h5 *ngIf="!selectedLocation" padding-left padding-right class="">{{"select_location_text" | translate}}</h5>
   <ion-card class="order-scroll">
     <h2 padding>
@@ -39,7 +45,7 @@
             <img data-src="{{cat.image_url}}">
           </div>
           <h4>{{cat.title}}</h4>
-          <p>{{cat.stores_count}} Food makers</p>
+          <p>{{cat.stores_count}} DeliBee Chefs</p>
         </div>
       </ion-scroll>
     </div>
@@ -56,13 +62,15 @@
       <div class="near-rest">
         <ion-card>
           <div class="img">
-            <ion-badge class="bg-green fw-3">{{store.ratings}}</ion-badge>
+            <ion-badge *ngIf="store.ratings>0" class="bg-green fw-3">{{store.ratings}}
+              <ion-icon name="md-star"></ion-icon>
+            </ion-badge>
             <div class="img-box"><img data-src="{{store.image_url}}"></div>
           </div>
           <ion-card-content>
             <ion-card-title class="text-white fw-5">
               <span>{{store.name}}</span>
-              <!-- <ion-icon *ngIf="user" name="md-heart" [ngClass]="store.favourite==1 ? 'text-red' : 'text-white'"
+              <!-- <ion-icon *ngIf="user" name="md-heart" [ngClass]="store.favourite==1 ? 'favourite' : 'text-white'"
                 (click)="toggleFavorite(i)"></ion-icon> -->
             </ion-card-title>
             <p class="fw-3">{{store.area}}</p>

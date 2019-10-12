@@ -94,7 +94,13 @@ ul {
 }
 
 .favorite {
-    color: $text-orange !important;
+    color: red !important;
+}
+
+.text-promo{
+  color: red !important;
+  text-decoration: underline;
+  font-size: 20px;
 }
 
 .button {

@@ -83,7 +83,10 @@ export class ConfirmorderPage {
       offerAmmount = sum - this.discount;
       this.couponApplied = true;
       this.total = Number((offerAmmount + this.totalServiceFee + this.delivery_fee).toFixed(2));
-    } else this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
+      console.log("total is: --" + this.total)
+    } 
+    else 
+      this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
   }
 
   createOrder() {

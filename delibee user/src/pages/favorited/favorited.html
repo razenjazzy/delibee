@@ -18,18 +18,21 @@
         <ion-list>
             <ion-card (click)="chefdetail(store.store)" *ngFor="let store of stores;let i=index">
                 <div class="img">
-                    <ion-badge class="fw-3"
+                    <ion-badge *ngIf="store.store.ratings>0" class="text-white fw-5"
                         [ngClass]="{'bg-orange':store.store.favourite==1,'bg-green':store.store.favourite!=1}">
-                        {{store.store.ratings}}</ion-badge>
+                        {{store.store.ratings}}
+                        <ion-icon name="md-star">         
+                        </ion-icon>
+                    </ion-badge>
                     <div class="img-box">
                         <img data-src="{{store.store.image_url}}">
                     </div>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
                 <ion-card-content>
                     <ion-card-title class="text-white fw-5">
                         <span>{{store.store.name}}</span>
                         <ion-icon name="md-heart" class="text-white"
-                            [ngClass]="{'text-orange':store.store.favourite==1,'text-white':store.store.favourite!=1}"
+                            [ngClass]="{'favorite':store.store.favourite==1,'text-white':store.store.favourite!=1}"
                             (click)="toggleFavorite(i);$event.stopPropagation();"></ion-icon>
                     </ion-card-title>
                     <p class="fw-3">{{store.store.area}}</p>
@@ -37,7 +40,7 @@
                 <ion-row>
                     <ion-col col-4>
                         <h5 class="text-light">{{"avg_dlvr_time" | translate}}</h5>
-                        <h6 class="text-dark">{{store.store.delivery_time}} mins</h6>
+                        <h6 class="text-dark">{{store.store.delivery_time}}</h6>
                     </ion-col>
                     <ion-col col-4>
                         <h5 class="text-light">{{"min_order" | translate}}</h5>

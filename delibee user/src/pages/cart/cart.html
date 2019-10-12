@@ -47,7 +47,7 @@
     <ion-toolbar *ngIf="cartItems && cartItems.length">
         <div class="fixd-bottom">
             <div class="ditails">
-                <p text-center class="text-green" (click)="codePage()">{{"hav_promo" | translate}}</p>
+                <p text-center class="text-promo" (click)="codePage()">{{"add_promo" | translate}}</p>
                 <h2 class="sub-total">{{"sub_total" | translate}} <span>{{currency}} {{subTotal}}</span></h2>
                 <h2>{{"service_fee" | translate}}
                     <span *ngIf="service" style="margin-left:5px">({{tax_in_percent}}%)</span>

@@ -62,14 +62,12 @@ export class HomePage {
       });
       this.getStores(-1);
     }
-
     // setTimeout(() => {
     //   let store = new Store();
     //   store.id = 24;
     //   this.storeDetail(store);
     // }, 2000);
   }
-
   checkForLocation() {
     this.diagnostic.isLocationEnabled().then((isAvailable) => {
       if (isAvailable) {
@@ -142,9 +140,27 @@ export class HomePage {
       this.pageNo = 1;
       this.categories = new Array<CategoryFood>();
       this.stores = new Array<Store>();
-      this.global.presentLoading("Refreshing Food makers");
+      this.global.presentLoading("Refreshing DeliBee Chefs");
       this.getStores(-1);
       this.getCategories();
+    }
+  }
+  
+  // doRefresh(event) {
+  //   console.log('Begin async operation');
+  //   this.translate.get('loading_products').subscribe(value => {
+  //     this.getStores(-1);
+  //     this.getCategories();
+  //     event.complete();
+  //   });
+  // }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getStores(-1);
+    this.getCategories();
+    if(refresher){
+      refresher.complete();
     }
   }
 

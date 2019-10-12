@@ -24,7 +24,8 @@ export interface AppConfig {
 
 export const BaseAppConfig: AppConfig = {
   appName: "DeliBee",
-  apiBase: "http://54.213.204.238/",
+  // apiBase: "http://54.213.204.238/",
+  apiBase: "http://golpocom.com/cookfu/public/",
   googleApiKey: "AIzaSyDBZjAUb_BqMgaE6ZanWXaSgWP_VX-NynQ",
   stripeKey: "",
   enableChooseDelivery: false,

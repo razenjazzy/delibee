@@ -150,7 +150,7 @@ export class SigninPage {
   }
 
   alertPhone(modal) {
-    if (!modal) this.phoneNumberFull = "+" + this.countryCode + this.phoneNumber;
+    if (!modal) this.phoneNumberFull = "+" + this.countryCode + this.phoneNumber.substr(this.phoneNumber.length-10,this.phoneNumber.length);
     this.translate.get(['yes', 'no', 'alert_msg']).subscribe(text => {
       let alert = this.alertCtrl.create({
         title: this.phoneNumberFull,
