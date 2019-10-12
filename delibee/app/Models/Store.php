@@ -6,6 +6,7 @@ use App\Http\Requests\Customer\ApiStoreListRequest;
 use App\Models\Auth\User\Traits\Ables\Protectable;
 use App\Models\Auth\User\Traits\Attributes\UserAttributes;
 use App\Models\Auth\User\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -98,6 +99,10 @@ class Store extends Model
         $stores = $stores->whereHas('menuitems', function ($query) {
             $query->where('status', 'approved');
         });
+
+        // filter out closed stores
+        $stores = $stores->whereTime('opens_at', '<=', Carbon::now()->format("H:i:s"));
+        $stores = $stores->whereTime('closes_at', '>=', Carbon::now()->format("H:i:s"));
 
         // sort
         if ($request->input('cost_for_two_sort')) {
