@@ -1,3 +1,4 @@
+
 import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -118,7 +119,7 @@ export class SelectareaPage {
     this.autocompleteService.getPlacePredictions
     if (this.query.length > 0 && !this.searchDisabled) {
       let config = {
-		types: ['establishment'],
+        types: ['establishment'],
         location: new google.maps.LatLng(23.8103, 90.4125),
         radius: 22000,
         componentRestrictions: { country: 'bd' },

@@ -38,9 +38,9 @@ export class GoogleMaps {
           let script = document.createElement("script");
           script.id = "googleMaps";
           if (this.config.googleApiKey) {
-            script.src = 'http://maps.google.com/maps/api/js?key=' + this.config.googleApiKey + '&callback=initAutocomplete&libraries=places';
+            script.src = 'http://maps.google.com/maps/api/js?key=' + this.config.googleApiKey + '&callback=mapInit&libraries=places';
           } else {
-            script.src = 'http://maps.google.com/maps/api/js?callback=initAutocomplete';
+            script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
           }
           document.body.appendChild(script);
         }
