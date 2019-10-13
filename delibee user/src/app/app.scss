@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,700');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 $theme-color: #020202;
 $text-orange:$theme-color;
-$theme-color_green: #fac20f;
+$theme-color_green: #ffd11a;
 $gray:#969696;
 $white:#fff;
-$yelow_color:#ffa800;
+$delibee-yellow-color:#ffd11a;
 $bg-light:#f5f5f5;
 $white-color:#ffffff;
 
@@ -62,7 +62,7 @@ ul {
 }
 
 .bg-green {
-    background: $theme-color !important;
+    background: $delibee-yellow-color !important;
 }
 
 .bg-orange {
@@ -75,6 +75,10 @@ ul {
 
 .text-white {
     color: $white !important;
+}
+
+.text-black {
+    color: $theme-color !important;
 }
 
 .text-red {
@@ -186,7 +190,7 @@ ul {
         }
 
         .toolbar-background {
-            background: $theme-color_green;
+            background: $delibee-yellow-color;
         }
 
         .toolbar-content {
@@ -202,7 +206,7 @@ ul {
 
             span {
                 margin-left: auto;
-                padding-top: 6px;
+                padding-top: 5px;
                 margin-right: 10px;
 
                 ion-icon {

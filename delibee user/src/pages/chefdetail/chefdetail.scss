@@ -57,7 +57,7 @@ page-chefdetail {
                 .reting {
                     ion-icon {
                         &.active {
-                            color: $yelow_color;
+                            color: $delibee-yellow-color;
                         }
                     }
                 }
@@ -311,7 +311,7 @@ page-chefdetail {
                             color: lighten($gray, 20%);
 
                             &.active {
-                                color: $yelow_color;
+                                color: $delibee-yellow-color;
                             }
                         }
                     }
