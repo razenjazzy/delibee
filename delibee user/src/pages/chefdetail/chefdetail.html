@@ -105,7 +105,7 @@
                         <ion-row>
                             <ion-col>
                                 <h3 *ngIf="rating.user && rating.user.name">{{rating.user.name}}</h3>
-                                <h3 *ngIf="!(rating.user || rating.user.name)">George Timber</h3>
+                                <h3 *ngIf="!(rating.user || rating.user.name)">DeliBee User</h3>
                                 <ion-badge item-end class="">{{rating.rating}}</ion-badge>
                                 <span class="retaing">
                                     <ion-icon name="md-star" [ngClass]="{'active':rating.rating >= 1}"></ion-icon>

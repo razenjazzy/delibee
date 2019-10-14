@@ -179,9 +179,14 @@ export class HomePage {
       if (!this.categories || !this.categories.length) {
         this.getCategories();
       }
-      this.global.dismissLoading();
       this.doneAll = (!res.data || !res.data.length);
-      this.stores = this.stores.concat(res.data);
+      this.global.dismissLoading();
+      let stores: Array<any> = res.data;
+        for (var i = 0; i < stores.length; i++) {
+          if (stores[i].ratings)
+            stores[i].ratings = Number(stores[i].ratings).toFixed(1);
+        }
+      this.stores = this.stores.concat(stores);
       if (this.infiniteScroll) {
         this.infiniteScroll.complete();
       }
