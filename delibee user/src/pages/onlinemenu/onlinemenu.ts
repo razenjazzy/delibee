@@ -21,6 +21,8 @@ export class OnlinemenuPage {
   private cartTotal: number = 0;
   private currency: string = "";
   private cartItems: Array<CartItem>;
+  private categories: Array<any>;
+  private cartSize: number = 0;
   private item: Item;
   private quantity: number = 1;
   private priceToShow = 0;
@@ -112,6 +114,11 @@ export class OnlinemenuPage {
     this.priceToShow = Number((this.quantity * (this.item.price + choicesTotal)).toFixed(2));
   }
 
+  ionViewDidEnter() {
+    this.cartItems = JSON.parse(window.localStorage.getItem(Constants.CART_ITEMS));
+    this.calculateTotal();
+  }
+  
   addToCart() {
     let store: Store = JSON.parse(window.localStorage.getItem(Constants.SELECTED_STORE));
     if (store && (store.id != this.store.id)) {
@@ -134,7 +141,27 @@ export class OnlinemenuPage {
       this.cartItems = this.global.getCartItems();
       console.log("ci", this.cartItems);
       window.localStorage.setItem('changed', 'changed');
+      this.calculateTotal();
     }
+  }
+
+  calculateTotal() {
+    this.cartItems = JSON.parse(window.localStorage.getItem(Constants.CART_ITEMS));
+    let sum: number = 0;
+    if (this.cartItems) {
+      this.cartSize = this.cartItems.length;
+      for (let item of this.cartItems) {
+        sum += item.priceTotal;
+      }
+    } else this.cartItems = new Array<CartItem>();
+    this.cartTotal = sum;
+    if (this.cartItems.length == 0)
+      window.localStorage.removeItem(Constants.SELECTED_STORE);
+  }
+
+  removeCart(parentIndex, childIndex) {
+    this.categories[parentIndex].items[childIndex].added = !(this.global.removeCartItem(this.categories[parentIndex].items[childIndex]));
+    this.calculateTotal();
   }
 
   showConflict() {

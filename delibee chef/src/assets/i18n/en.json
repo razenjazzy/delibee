@@ -108,7 +108,7 @@
     "otp_verified": "OTP Verified",
     "verify_otp_err": "OTP Verification failed",
     "select_country": "Select country",
-    "select_phone": "Enter phone number (format: 1XXXXXXXXX)",
+    "select_phone": "Enter phone number",
     "empty_name": "Enter your name",
     "register_nw": "Register now",
     "empty_msg": "Write your message",

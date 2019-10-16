@@ -1,17 +1,24 @@
-<ion-header class="bg-transparent ">
+<ion-header class="bg-transparent">
     <ion-navbar>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
+        <ion-title>
+        </ion-title>
+        <span float-end>
+            <span class="cart" (click)="cart()">
+                <ion-badge *ngIf="cartSize" class="">{{cartSize}}</ion-badge>
+                <ion-icon name="md-cart" class="text-black"></ion-icon>
+            </span>
+        </span>
     </ion-navbar>
-</ion-header>
-
-<ion-content class="bg-light">
     <div class="banner">
         <div class="img-box">
-            <img [src]="item.image_url">
+            <img [src]="store.image_url">
         </div>
     </div>
+</ion-header>
+<ion-content class="bg-light">
     <ion-card no-lines>
         <ion-card-header>
             <h4>{{item.title}}</h4>

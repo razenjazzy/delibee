@@ -4,10 +4,26 @@ page-onlinemenu {
             position: absolute;
             z-index: 1;
         }
-
+        .bar-button .button-inner ion-icon {
+            color: darken($gray, 100%) !important;
+        }
         .banner {
             background: #fff;
             z-index: -1;
+        }
+        ion-badge {
+            border-radius: 50%;
+            font-size: .9rem !important;
+            font-weight: 400;
+            height: 16px;
+            width: 16px;
+            text-align: center;
+            padding: 0;
+            line-height: 16px;
+            position: absolute;
+            margin-top: -.9rem;
+            right: -8px;
+            color: black;
         }
     }
 
