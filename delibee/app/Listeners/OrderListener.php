@@ -81,7 +81,7 @@ class OrderListener
 
             // send notification to user that his order accepted by user
             $this->pushNotifications[] = new PushNotification($this->order->user->fcm_registration_id,
-                'Order Accepted', 'Your order has been accepted by store', ["order_id" => $this->order->id]);
+                'Order Accepted', 'Your order has been accepted by chef', ["order_id" => $this->order->id]);
         }
 
 
@@ -99,12 +99,12 @@ class OrderListener
         if ($this->order->status == 'dispatched') {
 
             $this->pushNotifications[] = new PushNotification($this->order->user->fcm_registration_id,
-                'Order Dispatched', 'Restaurant has dispatched your order', ["order_id" => $this->order->id]);
+                'Order Dispatched', 'Chef has dispatched your order', ["order_id" => $this->order->id]);
         }
 
         if ($this->order->status == 'rejected') {
             $this->pushNotifications[] = new PushNotification($this->order->user->fcm_registration_id,
-                'Order Rejected', 'Sorry! Your order has been rejected by store', ["order_id" => $this->order->id]);
+                'Order Rejected', 'Sorry! Your order has been rejected by chef', ["order_id" => $this->order->id]);
         }
     }
 
@@ -212,3 +212,6 @@ class OrderListener
             'Order Complete', 'Order is complete. Earnings credited', ["order_id" => $this->order->id]);
     }
 }
+
+
+
