@@ -100,7 +100,12 @@ export class AdditemPage {
       this.translate.get('itm_price_err').subscribe(value => {
         this.global.showToast(value);
       });
-    } else if (!this.item.detail) {
+    } else if (!this.item.quantity) {
+      this.translate.get('itm_quantity_err').subscribe(value => {
+        this.global.showToast(value);
+      });
+    }
+    else if (!this.item.detail) {
       this.translate.get('store_details_err').subscribe(value => {
         this.global.showToast(value);
       });

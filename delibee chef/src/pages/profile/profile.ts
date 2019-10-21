@@ -26,10 +26,12 @@ export class ProfilePage {
   private storeRequest = new StoreResponse();
   private subscriptions = new Array<Subscription>();
   private tokenToUse: string;
+  private areas = new Array<any>();
 
   constructor(private navCtrl: NavController, navParam: NavParams, private imagePicker: ImagePicker,
     private file: File, private service: ClientService, private translate: TranslateService,
     private _firebase: FirebaseClient, private global: Global, private app: App, private platform: Platform) {
+    this.getAreas();
     let login_res = navParam.get("login_res");
     if (login_res && login_res.token && login_res.user) {
       this.user = login_res.user;
@@ -56,7 +58,7 @@ export class ProfilePage {
     let newSelectedLocation: MyLocation = JSON.parse(window.localStorage.getItem(Constants.KEY_LOCATION));
     if (newSelectedLocation) {
       this.storeRequest.address = newSelectedLocation.name;
-      this.storeRequest.area = newSelectedLocation.name;
+      this.storeRequest.address = newSelectedLocation.area;
       this.storeRequest.latitude = newSelectedLocation.lat;
       this.storeRequest.longitude = newSelectedLocation.lng;
       console.log("newSelectedLocation", this.storeRequest);
@@ -89,6 +91,14 @@ export class ProfilePage {
     } else {
       this.editphoto();
     }
+  }
+
+  getAreas() {
+    this.service.getAreas().subscribe(data => {
+      this.areas = data;
+    }, err => {
+      console.log(err);
+    })
   }
 
   checkForLocation() {
@@ -130,6 +140,10 @@ export class ProfilePage {
         this.global.showToast(value);
       });
     } else if (!this.storeRequest.address || !this.storeRequest.address.length || !this.storeRequest.latitude || !this.storeRequest.longitude) {
+      this.translate.get('store_address_err').subscribe(value => {
+        this.global.showToast(value);
+      });
+    } else if (!this.storeRequest.area || !this.storeRequest.area.length) {
       this.translate.get('store_address_err').subscribe(value => {
         this.global.showToast(value);
       });

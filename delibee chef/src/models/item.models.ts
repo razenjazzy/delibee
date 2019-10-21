@@ -8,6 +8,7 @@ export class Item {
 	specification: string;
 	image_url: string;
 	price: number;
+	quantity: number;
 	is_available: string;
 	is_non_veg: number;
 	store_id: number;

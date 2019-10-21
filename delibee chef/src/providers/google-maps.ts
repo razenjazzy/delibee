@@ -1,3 +1,4 @@
+/// <reference types="@types/googlemaps" />
 import { Injectable, Inject } from '@angular/core';
 import { Connectivity } from './connectivity-service';
 import { Geolocation } from '@ionic-native/geolocation';

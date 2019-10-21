@@ -63,7 +63,7 @@
                 </ion-row>
 
                 <ion-item>
-                    <ion-select [(ngModel)]="countryCode" interface="popover" class="text-thime"
+                    <ion-select [(ngModel)]="countryCode" interface="popover" multiple="false" class="text-theme"
                         placeholder="{{'select_country' | translate}}">
                         <ion-option [value]="country.callingCodes[0]" *ngFor="let country of countries">{{country.name}}
                         </ion-option>

@@ -113,9 +113,13 @@ export class SelectareaPage {
 
   searchPlace() {
     this.saveDisabled = true;
+    this.autocompleteService.getPlacePredictions
     if (this.query.length > 0 && !this.searchDisabled) {
       let config = {
-        types: ['geocode'],
+        types: ['establishment'],
+        location: new google.maps.LatLng(23.8103, 90.4125),
+        radius: 22000,
+        componentRestrictions: { country: 'bd' },
         input: this.query
       }
       this.autocompleteService.getPlacePredictions(config, (predictions, status) => {

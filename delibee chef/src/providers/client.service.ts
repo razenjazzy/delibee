@@ -6,6 +6,7 @@ import 'rxjs/add/operator/concatMap';
 import { Observable } from "rxjs/Observable";
 import { APP_CONFIG, AppConfig } from "../app/app.config";
 import { Country } from '../models/country.models';
+import { Area } from '../models/area.models';
 import { StoreRequest } from '../models/store-request.models';
 import { StoreResponse } from '../models/store-response.models';
 import { ResetPasswordResponse } from '../models/reset-password-request.models';
@@ -50,6 +51,12 @@ export class ClientService {
         }
       }
       data.splice(0, 0, indiaObj);
+      return Observable.of(data);
+    });
+  }
+
+  public getAreas(): Observable<Array<Area>> {
+    return this.http.get<Array<Area>>('./assets/json/areas.json').concatMap((data) => {
       return Observable.of(data);
     });
   }
