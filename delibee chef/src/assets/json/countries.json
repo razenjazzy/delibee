@@ -1362,14 +1362,14 @@
       "cioc": "BRN"
     },
     {
-      "name": "Bangladesh",
+      "name": "Bangladesh (+880)",
       "topLevelDomain": [
         ".bd"
       ],
       "alpha2Code": "BD",
       "alpha3Code": "BGD",
       "callingCodes": [
-        "+880"
+        "880"
       ],
       "capital": "Dhaka",
       "altSpellings": [
