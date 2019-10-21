@@ -4,3 +4,12 @@ delibee user/.sourcemaps/
 delibee user/platforms/
 delibee user/.vscode/
 delibee user/typings/
+delibee chef/node_modules/
+delibee chef/www/
+delibee chef/.sourcemaps/
+delibee chef/.vscode/
+delibee chef/typings/
+delibee delivery/.vscode/typings/
+delibee user/package-lock.json
+delibee chef/package-lock.json
+delibee delivery/typings/
