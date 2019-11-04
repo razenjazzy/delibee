@@ -39,6 +39,7 @@
     "add_item": "Add item",
     "upload_items_image": "Upload item's image",
     "item_name": "Item name",
+    "item_quantity": "Quantity",
     "choose_item_category": "Choose item category",
     "new_password": "New password",
     "available?": "Available?",

@@ -75,6 +75,7 @@
         </ion-list>
 
         <ion-list no-lines class="address">
+            <h2 class="text-green">{{"restaurant_address" | translate}}</h2>
             <ion-item>
                 <ion-label floating>{{'enter_address' | translate}}</ion-label>
                 <ion-select [(ngModel)]="storeRequest.area" interface="popover" class="text-thime"
@@ -83,7 +84,6 @@
                     </ion-option>
                 </ion-select>
             </ion-item>
-            <h2 class="text-green">{{"restaurant_address" | translate}}</h2>
             <ion-textarea [(ngModel)]="storeRequest.address" placeholder="{{'enter_address' | translate}}">
             </ion-textarea>
             <h3 class="text-green" (click)="checkForLocation()">{{"point_map" | translate}}</h3>
