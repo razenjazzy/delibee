@@ -1,10 +1,10 @@
+/// <reference types="@types/googlemaps" />
 import { NavController, Platform, MenuController, ToastController, NavParams } from 'ionic-angular';
 import { Component, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '../../providers/google-maps';
 import { Constants } from '../../models/constants.models';
 import { MyLocation } from '../../models/my-location.models';
-import { } from '@types/googlemaps';
 
 @Component({
   selector: 'page-selectarea',
