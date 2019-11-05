@@ -44,7 +44,7 @@ export class ProfilePage {
     if (savedStore && savedStore.name && savedStore.name.length) {
       this.storeRequest = savedStore;
     }
-    this.storeRequest.image_url = "imageurl.jpg";
+    this.storeRequest.image_url = "../../assets/imgs/blank.png";
   }
 
   ionViewWillLeave() {
@@ -58,7 +58,7 @@ export class ProfilePage {
     let newSelectedLocation: MyLocation = JSON.parse(window.localStorage.getItem(Constants.KEY_LOCATION));
     if (newSelectedLocation) {
       this.storeRequest.address = newSelectedLocation.name;
-      this.storeRequest.address = newSelectedLocation.area;
+      this.storeRequest.area = newSelectedLocation.area;
       this.storeRequest.latitude = newSelectedLocation.lat;
       this.storeRequest.longitude = newSelectedLocation.lng;
       console.log("newSelectedLocation", this.storeRequest);
