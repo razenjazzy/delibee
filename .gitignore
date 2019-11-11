@@ -1,15 +1,22 @@
-delibee user/node_modules/
-delibee user/www/
-delibee user/.sourcemaps/
-delibee user/platforms/
-delibee user/.vscode/
-delibee user/typings/
-delibee chef/node_modules/
-delibee chef/www/
-delibee chef/.sourcemaps/
-delibee chef/.vscode/
-delibee chef/typings/
-delibee delivery/.vscode/typings/
-delibee user/package-lock.json
-delibee chef/package-lock.json
-delibee delivery/typings/
+delibeeuser/node_modules/
+delibeeuser/www/
+delibeeuser/.sourcemaps/
+delibeeuser/platforms/
+delibeeuser/.vscode/
+delibeeuser/typings/
+delibeechef/node_modules/
+delibeechef/www/
+delibeechef/.sourcemaps/
+delibeechef/.vscode/
+delibeechef/typings/
+delibeedelivery/.vscode/typings/
+delibeeuser/package-lock.json
+delibeechef/package-lock.json
+delibeedelivery/typings/
+delibeeuser/www/
+delibeeuser/node_modules/
+delibeeuser/typings/
+delibeeuser/platforms/
+delibeechef/platforms/
+delibeechef/plugins/
+delibeechef/

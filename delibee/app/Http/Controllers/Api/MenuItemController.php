@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiMenuItemCreateRequest;
 use App\Http\Requests\ApiMenuItemUpdateRequest;
 use App\Http\Requests\ApiMenuItemUpdateStatusRequest;
+use App\Http\Requests\ApiMenuItemUpdateQuantityRequest;
 use App\Models\MenuItem;
 use App\Models\MenuItemChoice;
 use App\Models\MenuItemGroup;
-use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +23,7 @@ class MenuItemController extends Controller
      */
     public function index(Request $request)
     {
-        $status = $request->status && $request->status == 'pending'  ? ['pending', 'rejected'] : ["approved"];
+        $status = $request->status && $request->status == 'pending' ? ['pending', 'rejected'] : ["approved"];
         $items = MenuItem::where('store_id', Auth::user()->store->id)->whereIn('status', $status)
             ->orderBy('title', 'desc')->paginate(config('constants.paginate_per_page'));
         return response()->json($items);
@@ -32,7 +32,7 @@ class MenuItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(ApiMenuItemCreateRequest $request)
@@ -44,7 +44,7 @@ class MenuItemController extends Controller
         $item->save();
 
         /* handle item choices */
-        if($request->has('groups')) {
+        if ($request->has('groups')) {
             foreach ($request->groups as $group) {
 
                 // create choice group
@@ -69,7 +69,7 @@ class MenuItemController extends Controller
         /* handle categories */
 
         // attach categories with menu item
-        foreach($request->categories as $categoryId) {
+        foreach ($request->categories as $categoryId) {
             $item->categories()->attach($categoryId);
         }
 
@@ -82,7 +82,7 @@ class MenuItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MenuItem  $menuItem
+     * @param  \App\Models\MenuItem $menuItem
      * @return \Illuminate\Http\Response
      */
     public function show(MenuItem $menuItem)
@@ -93,21 +93,22 @@ class MenuItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MenuItem  $menuItem
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\MenuItem $menuItem
      * @return \Illuminate\Http\Response
      */
     public function update(ApiMenuItemUpdateRequest $request, MenuItem $menuItem)
     {
         $menuItem->fill($request->all());
+        $menuItem->status = 'pending';
         $menuItem->save();
 
         /* handle item choices */
-        if($request->has('groups')) {
+        if ($request->has('groups')) {
             foreach ($request->groups as $group) {
 
                 // update or create choice group
-                if(array_key_exists('id', $group)) {
+                if (array_key_exists('id', $group)) {
                     $menuItemGroup = MenuItemGroup::find($group['id']);
                 } else {
                     $menuItemGroup = new MenuItemGroup();
@@ -120,7 +121,7 @@ class MenuItemController extends Controller
 
                 // update or create choices
                 foreach ($group['choices'] as $choice) {
-                    if(array_key_exists('id', $choice)) {
+                    if (array_key_exists('id', $choice)) {
                         $menuItemChoice = MenuItemChoice::find($choice['id']);
                     } else {
                         $menuItemChoice = new MenuItemChoice();
@@ -139,7 +140,7 @@ class MenuItemController extends Controller
         $menuItem->categories()->detach();
 
         // attach categories with menu item
-        foreach($request->categories as $categoryId) {
+        foreach ($request->categories as $categoryId) {
             $menuItem->categories()->attach($categoryId);
         }
 
@@ -152,8 +153,8 @@ class MenuItemController extends Controller
     /**
      * Update the status of menu item
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MenuItem  $menuItem
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\MenuItem $menuItem
      * @return \Illuminate\Http\Response
      */
     public function updateStatus(ApiMenuItemUpdateStatusRequest $request, MenuItem $menuItem)
@@ -164,9 +165,22 @@ class MenuItemController extends Controller
     }
 
     /**
+     * Update the quantity of menu item
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\MenuItem $menuItem
+     * @return \Illuminate\Http\Response
+     */
+    public function updateQuantity(ApiMenuItemUpdateQuantityRequest $request, MenuItem $menuItem) {
+        $menuItem->fill($request->all());
+        $menuItem->save();
+        return response()->json($menuItem);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MenuItem  $menuItem
+     * @param  \App\Models\MenuItem $menuItem
      * @return \Illuminate\Http\Response
      */
     public function destroy(MenuItem $menuItem)

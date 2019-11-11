@@ -19,7 +19,7 @@ class MenuItem extends Model
 
     protected $table = 'menu_items';
 
-    protected $fillable = ['title', 'detail', 'specification', 'image_url', 'price',
+    protected $fillable = ['title', 'detail', 'specification', 'image_url', 'price','quantity',
         'is_available', 'is_non_veg', 'status', 'store_id'];
 
     protected $with = array('categories', 'menuItemGroups');

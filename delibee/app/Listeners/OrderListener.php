@@ -93,7 +93,7 @@ class OrderListener
             }
 
             $this->pushNotifications[] = new PushNotification($this->order->user->fcm_registration_id,
-                'Order Preparing', 'Store has started preparing your order', ["order_id" => $this->order->id]);
+                'Order Preparing', 'Chef has started preparing your order', ["order_id" => $this->order->id]);
         }
 
         if ($this->order->status == 'dispatched') {
@@ -212,6 +212,3 @@ class OrderListener
             'Order Complete', 'Order is complete. Earnings credited', ["order_id" => $this->order->id]);
     }
 }
-
-
-

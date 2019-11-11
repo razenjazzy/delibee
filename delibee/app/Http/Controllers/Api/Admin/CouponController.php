@@ -33,6 +33,11 @@ class CouponController extends Controller
         return response()->json($coupon, 201);
     }
 
+    public function show(Coupon $coupon)
+    {
+        return response()->json($coupon);
+    }
+
     public function update(Request $request, Coupon $coupon)
     {
         $request->validate([

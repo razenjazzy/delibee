@@ -122,6 +122,7 @@ Route::namespace('Api')->name('api.')->group(function () {
         Route::get('/menuitem/{menuItem}', 'MenuItemController@show')->name('menuitem.show');
         Route::post('/menuitem/{menuItem}', 'MenuItemController@update')->name('menuitem.update');
         Route::post('/menuitem/{menuItem}/update-status', 'MenuItemController@updateStatus')->name('menuitem.updateStatus');
+        Route::put('/menuitem/{menuItem}/update-quantity', 'MenuItemController@updateQuantity')->name('menuitem.updateQuantity');
         Route::delete('/menuitem/{menuItem}', 'MenuItemController@destroy')->name('menuitem.destroy');
 
         Route::get('/bank-detail', 'BankDetailController@show')->name('bankdetail.show');
@@ -178,7 +179,7 @@ Route::namespace('Api')->name('api.')->group(function () {
             Route::get('/payment-methods', 'PaymentMethodController@index')->name('paymentmethod.index');
         });
 
-        /* Customer related APIs */
+        /* Delivery related APIs */
         Route::namespace('Delivery')->prefix('delivery')->name('delivery.')->group(function () {
             Route::get('/profile', 'DeliveryProfileController@show')->name('profile.show');
             // update delivery profile
