@@ -1,0 +1,114 @@
+page-earnings {
+
+    .list {
+        margin-bottom: 10px;
+
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 500;
+            letter-spacing: .5px;
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-left: auto;
+                min-width: 61px;
+                text-align: right;
+                color: darken($theme-color, 10%);
+
+                &.name {
+                    margin-right: auto;
+                    width: auto;
+                    margin: 0;
+                    color: darken($theme-color, 100%);
+
+                }
+            }
+
+            &.heading {
+                background: $white;
+                margin: auto;
+                padding: 20px 25px 9px 25px;
+                color: darken($gray, 0%);
+                font-size: 1.59rem;
+            }
+        }
+
+        .item {
+            padding: 0;
+            border-bottom: 1px solid lighten($gray, 20%) !important;
+            padding: 12px 16px 15px 21px;
+            align-items: center;
+
+            .item-inner {
+                padding: 0;
+
+                .label {
+                    margin: 0;
+                }
+            }
+
+            &.top-header {
+                border-bottom: 0px !important;
+                padding-top: 25px !important;
+                padding-bottom: 15px !important;
+                box-shadow: 0 2px 7px -5px rgba(0, 0, 0, 0.8);
+                margin-bottom: 5px;
+
+                h2 {
+                    margin-bottom: 5px;
+                    display: block;
+                    color: lighten($gray, 10%);
+                    font-size: 1.4rem;
+                    padding: 0;
+                }
+
+                h3 {
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    margin-top: 10px;
+                    color: darken($theme-color, 10%);
+                }
+            }
+
+            ion-avatar {
+                margin-left: 7px;
+                min-width: 55px;
+                width: 55px;
+                height: 55px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 50%;
+                margin-top: 0;
+                margin: 0 !important;
+                margin-right: 15px !important;
+
+                img {
+                    position: absolute;
+                    top: 0% !important;
+                    left: -50% !important;
+                    right: -50% !important;
+                    bottom: 0% !important;
+                    margin: auto !important;
+                    height: 100% !important;
+                    width: 100% !important;
+                    max-width: unset !important;
+                }
+            }
+
+            p {
+                font-size: 1.3rem;
+                color: lighten($gray, 15%);
+                margin-top: 5px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                letter-spacing: .5px;
+
+                span {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}

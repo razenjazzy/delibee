@@ -1,0 +1,141 @@
+page-orderstatus {
+    .header {
+        .toolbar {
+            .toolbar-content {
+                .toolbar-title {
+                    padding-left: 0px !important;
+                }
+            }
+        }
+    }
+    .order {
+        &.list {
+            margin-top: 7px;
+            margin-bottom: 10px;
+            .item {
+                padding: 1px 11px 1px 23px;
+                margin-bottom: 7px;
+                box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.10);
+                .row {
+                    margin-bottom: 7px;
+                    .col {
+                        padding: 0;
+                        h2 {
+                            font-size: 1.6rem;
+                        }
+                        h3 {
+                            font-size: 1.25rem;
+                            font-weight: 400;
+                            span {
+                                &.text-light {
+                                    color: lighten($gray, 10%);
+                                }
+                            }
+                        }
+                    }
+                }
+                p {
+                    color: lighten($gray, 10%);
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                    margin: 0px;
+                    letter-spacing: .5px;
+                }
+            }
+        }
+    }
+    .order-details {
+        &.list {
+            background: $white;
+            padding: 1px 11px 10px 23px;
+            box-shadow: 0 2px 14px -6px rgba(0, 0, 0, 0.9);
+            margin-bottom: 173px;
+            h2 {
+                font-size: 1.7rem;
+                font-weight: 500;
+                margin: 0;
+            }
+            .item {
+                padding: 0;
+                padding-top: 10px;
+                h2 {
+                    display: flex;
+                    align-items: center;
+                    font-weight: 400;
+                    font-size: 1.6rem;
+                    position: relative;
+                    padding-bottom: 20px;
+                    margin-bottom: 22px;
+                    span {
+                        &.ml-auto {
+                            margin-left: auto;
+                        }
+                    }
+                    small {
+                        position: absolute;
+                        bottom: 0;
+                        color: darken($gray, 20%);
+                        font-size: 1.3rem;
+                        font-weight: 400;
+                    }
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    .fixd-bottom {
+        background: $white;
+        .row {
+            box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .15);
+            .col {
+                padding: 0;
+                font-size: 1.7rem;
+                padding: 13px 0;
+                &.bg-light {
+                    background: $bg-light !important;
+                }
+                &.bg-green {
+                    font-weight: 300;
+                    background: $theme-color !important;
+                }
+            }
+        }
+        h2 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            padding: 0 23px;
+            font-weight: 400;
+            margin-top: 18px;
+            span {
+                font-size: 1.3rem;
+                &.ml-auto {
+                    margin-left: auto;
+                }
+                span {
+                    color: lighten($gray, 10%);
+                }
+            }
+        }
+        p {
+            padding: 0 23px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: lighten($gray, 20%);
+            margin-bottom: 25px;
+            margin-top: 14px;
+            ion-icon {
+                min-width: 22px;
+                height: 22px;
+                line-height: 22px;
+                border-radius: 50%;
+                font-size: 1.4rem;
+                margin-right: 15px;
+            }
+        }
+    }
+}

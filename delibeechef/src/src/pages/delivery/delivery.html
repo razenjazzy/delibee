@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{"deliveries" | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="empty-view" *ngIf="!isLoading && (!orders || !orders.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/no-order.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_deliveries' | translate}}</span>
+        </div>
+    </div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{'pull_refresh' | translate}}" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list no-lines>
+        <ion-item *ngFor="let order of orders">
+            <ion-row>
+                <ion-col col-6>
+                    <h2 class="text-ellipsis">{{order.user.name}}</h2>
+                </ion-col>
+                <ion-col col-6 text-end>
+                    <h4 text-end>{{"payment_by" | translate}} <span class="text-light">{{getPaymentMethodName(order.id)}}</span>
+                    </h4>
+                </ion-col>
+            </ion-row>
+            <p class="order-code">{{"order" | translate}} #{{order.id}}</p>
+            <p>
+                <span class="text-ellipsis">{{"status" | translate}} on {{order.updated_at}}</span>
+                <span text-end [ngClass]="order.status=='dispatched' ? 'ml-auto text-green' : 'ml-auto text-orange'" text-capitalize>{{order.status}}</span>
+            </p>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

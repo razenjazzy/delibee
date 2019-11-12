@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"orders_info" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-list no-lines class="order">
+        <ion-item>
+            <ion-row>
+                <ion-col col-4>
+                    <h2 class="text-ellipsis">{{order.user.name}}</h2>
+                </ion-col>
+                <ion-col col-4>
+                    <h3 text-center> {{currency}} {{order.total}}</h3>
+                </ion-col>
+                <ion-col col-4 text-end>
+                    <h4>{{"payment_by" | translate}}<span> {{getPaymentMethodName(order.id)}} </span></h4>
+                </ion-col>
+            </ion-row>
+            <p class="order-code">{{"order" | translate}} #{{order.id}}</p>
+            <p class="text-ellipsis>">Ordered on {{order.created_at}}</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list no-linse class="order-details">
+        <h2 padding-top class="text-orange">{{"order_details" | translate}}</h2>
+        <ion-item>
+            <h2 *ngFor="let item of order.orderitems">
+                <span class="text-ellipsis">{{item.menuitem.title}}</span>
+                <small>{{item.quantity}} x {{currency}} {{item.total}}</small>
+                <span class="ml-auto">{{currency}} {{item.total}}</span>
+            </h2>
+            <h2 *ngIf="order.special_instructions && order.special_instructions.length">
+                <span class="text-ellipsis">{{"special_instructions" | translate}}</span>
+                <small>{{order.special_instructions}}</small>
+            </h2>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
+<ion-footer>
+    <div class="fixd-bottom">
+        <ion-row *ngIf="order.status=='new'">
+            <ion-col col-6 class="text-orange bg-light" text-center (click)="confirmReject()">
+                {{"cancel_order" | translate}}
+            </ion-col>
+            <ion-col col-6 class="text-white bg-green" text-center (click)="updateOrder('accepted')">
+                {{"accept_order" | translate}}
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="order.status=='accepted'">
+            <ion-col col-12 class="text-white bg-green" text-center (click)="updateOrder('dispatched')">
+                {{"dispatch_order" | translate}}
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="order.status=='rejected'">
+            <ion-col col-12 class="text-white bg-green" text-center>
+                {{"rejected" | translate}}
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="order.status=='dispatched'">
+            <ion-col col-12 class="text-white bg-green" text-center>
+                {{"dispatched" | translate}}
+            </ion-col>
+        </ion-row>
+        <h2 (click)="navUser()">
+            {{order.user.name}}
+            <span class="ml-auto">
+                <span>{{"payment_by" | translate}}</span>
+                {{getPaymentMethodName(order.id)}}
+            </span>
+        </h2>
+        <p (click)="navUser()">
+            <ion-icon name="md-home" class="bg-green text-white" text-center></ion-icon>
+            <span class="text-ellipsis">{{order.address.address}}</span>
+        </p>
+    </div>
+</ion-footer>

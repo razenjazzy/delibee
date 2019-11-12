@@ -1,0 +1,58 @@
+page-bankdatails {
+
+    .form {
+        max-width: unset;
+        background: $white;
+        margin-top: 10px;
+        padding: 0 30px;
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+            padding-top: 25px;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: darken($gray, 10%);
+            padding-bottom: 30px;
+        }
+
+        .list {
+            padding: 0;
+            padding-bottom: 68px;
+
+            .item {
+                margin-top: 10px;
+
+                &.item-label-floating {
+                    .text-input {
+                        margin-top: 8px;
+                        margin-bottom: 5px;
+                        font-size: 1.65rem;
+                        font-weight: 400;
+                        color: darken($gray, 40%);
+                    }
+                }
+
+                .label {
+                    font-size: 1.6rem;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    .fixd-bottom {
+        padding: 0 30px;
+        bottom: 16px;
+        position: unset;
+
+        .btn {
+            border-radius: 7px;
+        }
+    }
+}

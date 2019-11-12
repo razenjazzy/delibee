@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"order_status" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="bg-light">
+    <ion-list no-lines class="order">
+        <ion-item>
+            <ion-row>
+                <ion-col col-4>
+                    <h2 class="text-ellipsis">Aricson Smith</h2>
+                </ion-col>
+                <ion-col col-4>
+                    <h3 text-center> $ 114</h3>
+                </ion-col>
+                <ion-col col-4 text-right>
+                    <h3><span class="text-light">{{"payment_by" | translate}} </span>Cash</h3>
+                </ion-col>
+            </ion-row>
+            <p class="order-code">{{"order" | translate}} #042</p>
+            <p class="text-ellipsis>">Ordered on 11:45 am 01 Jan, 2018</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list no-linse class="order-details">
+        <h2 padding-top class="text-orange">{{"order_details" | translate}}</h2>
+        <ion-item>
+            <h2><span class="text-ellipsis">Ginger Chicken Curry</span> <small>1 x $ 29</small><span class="ml-auto">$ 29.00</span></h2>
+            <h2><span class="text-ellipsis">Panner Khurchan</span> <small>2 x $ 25</small><span class="ml-auto">$ 50.00</span></h2>
+            <h2><span class="text-ellipsis">Ginger Chicken Curry</span> <small>1 x $ 15</small><span class="ml-auto">$ 15.00</span></h2>
+            <h2><span class="text-ellipsis">French Fries</span> <small>2 x $ 10</small><span class="ml-auto">$ 20.00</span></h2>
+        </ion-item>
+    </ion-list>
+
+    <div class="fixd-bottom">
+        <ion-row>
+            <ion-col col-12 class="text-white bg-green" text-center>
+                {{"dispatched" | translate}}
+            </ion-col>
+        </ion-row>
+        <h2>Ahmed Ali<span class="ml-auto"><span>{{"payment_by" | translate}}</span> Cash</span>
+        </h2>
+        <p>
+            <ion-icon name="md-home" class="bg-green text-white" text-center></ion-icon> <span class="text-ellipsis">22 Old Gloden Road, Dubai</span></p>
+    </div>
+</ion-content>

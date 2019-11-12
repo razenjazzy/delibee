@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"orders" | translate}}</ion-title>
+    </ion-navbar>
+    <ion-segment [(ngModel)]="query" (ionChange)="onSegmentChange()">
+        <ion-segment-button value="new">
+            {{"new_orders" | translate}}
+        </ion-segment-button>
+        <ion-segment-button value="accepted">
+            {{"past_orders" | translate}}
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content class="bg-light" padding-top>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{'pull_refresh' | translate}}" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <div class="empty-view" *ngIf="!isLoading && (!toShow || !toShow.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/no-order.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'empty_orders' | translate}}</span>
+        </div>
+    </div>
+    <ion-list no-lines>
+        <ion-item (click)="ordersinfo(order)" *ngFor="let order of toShow">
+            <ion-row>
+                <ion-col col-4>
+                    <h2 class="text-ellipsis">{{order.user.name}}</h2>
+                </ion-col>
+                <ion-col col-4>
+                    <h3 text-center>{{currency}} {{order.total}}</h3>
+                </ion-col>
+                <ion-col col-4 text-end>
+                    <h4>{{"payment_by" | translate}} <span> {{getPaymentMethodName(order.id)}}</span></h4>
+                </ion-col>
+            </ion-row>
+            <p class="order-code">{{"order" | translate}} #{{order.id}}</p>
+            <p>
+                <span class="text-ellipsis" *ngIf="!order.updated_at">{{"ordered_on" | translate}} {{order.created_at}}</span>
+                <span class="text-ellipsis" *ngIf="order.updated_at">{{"ordered_on" | translate}} {{order.updated_at}}</span>
+                <span class="text-green ml-auto" *ngIf="order.status=='new'">{{"view_order" | translate}}
+                    <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+                </span>
+                <span class="ml-auto" *ngIf="order.status!='new'" text-capitalize [ngClass]="{'text-green':order.status!='rejected','text-orange':order.status=='rejected'}">{{order.status}}
+                    <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+                </span>
+            </p>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
