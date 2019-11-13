@@ -11,6 +11,11 @@ use Illuminate\Validation\ValidationException;
 
 class CouponController extends Controller
 {
+    public function index(Request $request)
+    {
+        $coupon = Coupon::whereRaw("1=1");
+        return response()->json($coupon->paginate(config('constants.paginate_per_page')));
+    }
 
     /**
      * @param ApiCouponRequest $request

@@ -1,0 +1,124 @@
+page-review {
+    .list {
+        margin-bottom: 0;
+
+        .item {
+            padding: 10px 20px 10px 20px;
+            border-radius: 5px;
+            width: calc(100% - 11px);
+            margin: auto;
+            margin-top: 10px;
+
+            .row {
+                margin: 0px -5px;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: darken($theme-color_green, 100%);
+                margin-bottom: 6px;
+                display: flex;
+                align-items: center;
+
+                span {
+                    color: darken($gray, 10%);
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    margin-left: auto;
+                    display: block;
+                }
+            }
+
+            h4 {
+                color: darken($gray, 10%);
+                font-size: 1.3rem;
+                font-weight: 300;
+            }
+
+            .badge {
+                margin-top: 0;
+                font-size: 1.2rem;
+                font-weight: 300;
+                padding-left: 10px;
+                padding-right: 10px;
+                background: $theme-color_green;
+                margin: 0 10px 10px 0;
+
+
+            }
+
+            .retaing {
+                ion-icon {
+                    position: relative;
+                    top: 2px;
+                    font-size: 1.6rem;
+                    color: lighten($gray, 20%);
+
+                    &.active {
+                        color: $yelow_color;
+
+                    }
+                }
+            }
+
+            p {
+                white-space: normal;
+                color: darken($gray, 10%);
+                font-weight: 300;
+                line-height: 20px;
+                font-size: 1.4rem;
+                padding-top: 0px;
+            }
+
+            h5 {
+                font-size: 1.2rem;
+                font-weight: 300;
+                color: darken($gray, 10%);
+                padding-top: 10px;
+            }
+
+            .item-inner {
+                padding: 0;
+            }
+
+            .label {
+                margin-top: 7px;
+                margin-bottom: 1px;
+                white-space: normal;
+                margin: 0;
+            }
+        }
+    }
+
+    .empty-view {
+        width: 200px;
+        margin: auto;
+        height: 200px;
+        top: 10%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10%;
+
+        img {
+            width: 100px;
+            margin: auto;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 50px;
+
+            span {
+                display: unset !important;
+            }
+        }
+    }
+
+
+}

@@ -26,7 +26,7 @@ class Address extends Model
 
     protected $table = 'addresses';
 
-    protected $fillable = ['title', 'address', 'latitude', 'longitude'];
+    protected $fillable = ['title', 'address', 'area', 'latitude', 'longitude'];
 
     public function user()
     {

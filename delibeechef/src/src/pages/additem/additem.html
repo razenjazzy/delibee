@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title *ngIf="!item.id">{{"add_item" | translate}}</ion-title>
+        <ion-title *ngIf="item.id">{{item.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="">
+    <div class="logo bg-light" (click)="openAction()">
+        <img [src]="item.image_url" class="store-image" *ngIf="item.image_url" class="store-image">
+        <div *ngIf="!item.image_url" class="text">
+            <ion-icon name="md-camera" text-center></ion-icon>
+            <h2>{{"upload_items_image" | translate}}</h2>
+        </div>
+        <input id="pres-item-image" style="display: none" (change)="changeFileListener($event)" type="file">
+    </div>
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{"item_name" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="item.title"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-select [(ngModel)]="item.is_non_veg" interface="popover">
+                    <ion-option value="0">Veg Food</ion-option>
+                    <ion-option value="1">Non-Veg Food</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-row>>
+                <ion-col col-6 padding-right>
+                    <ion-item>
+                        <ion-label floating>{{"choose_item_category" | translate}}</ion-label>
+                        <ion-select multiple="true" [(ngModel)]="item.categories">
+                            <ion-option *ngFor="let item of categories;let i=index" value="{{item.id}}">
+                                {{item.title}}
+                            </ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-6 padding-left>
+                    <ion-item class="toggle-box">
+                        <ion-label>{{"available?" | translate}}</ion-label>
+                        <ion-toggle [(ngModel)]="item.is_available"></ion-toggle>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-item>
+                <ion-label floating>{{"short_desription" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="item.specification"></ion-input>
+            </ion-item>
+            <ion-row>
+                <ion-col col-6 padding-right>
+                    <ion-item>
+                        <ion-label floating>{{"inr_price" | translate}}</ion-label>
+                        <ion-input type="text" [(ngModel)]="item.price"></ion-input>
+                    </ion-item>
+                </ion-col>
+
+            </ion-row>
+            <ion-item>
+                <ion-label floating>{{"item_quantity" | translate}}</ion-label>
+                <ion-textarea type="text" [(ngModel)]="item.quantity"></ion-textarea>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <div class="fixd-bottom">
+            <button ion-button round full class="btn-orange btn-shadow btn " margin-bottom (click)="saveItem()">
+                <span *ngIf="!item.id">{{"add_item" | translate}}</span>
+                <span *ngIf="item.id">{{"update_info" | translate}}</span>
+            </button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

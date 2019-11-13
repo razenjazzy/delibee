@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"bank_details" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding-top>
+  <div class="form">
+    <h2>{{"your_bank_detail" | translate}}</h2>
+    <p>{{"provid_your_bank_detail_where_admin_will_deposite" | translate}}<br>{{"your_earnings_throught_bank_transfer" | translate}}</p>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label floating>{{"account_holder_name" | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="bankDetail.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{"bank_name" | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="bankDetail.bank_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{"branch_code" | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="bankDetail.ifsc"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{"account_number" | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="bankDetail.account_number"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="fixd-bottom">
+      <button ion-button full margin-bottom class="btn-orange btn-shadow btn" (click)="send()">{{"update_info" | translate}}</button>
+    </div>    
+  </ion-toolbar>
+</ion-footer>

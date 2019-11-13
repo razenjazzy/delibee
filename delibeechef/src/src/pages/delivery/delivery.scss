@@ -1,0 +1,126 @@
+page-delivery {
+    .list {
+        margin-top: 7px;
+
+        .item {
+            padding: 10px 23px 14px 23px;
+            margin-bottom: 4px;
+            box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.10);
+
+            .item-inner {
+                padding: 0;
+
+                .label {
+                    margin: 0;
+                }
+            }
+
+            .row {
+                margin-bottom: 0px;
+                align-items: center;
+
+                .col {
+                    padding: 0;
+
+                    h2 {
+                        font-size: 1.6rem;
+                        color: darken($gray, 30%);
+                    }
+
+                    h3 {
+                        font-size: 1.2rem;
+                        font-weight: 500;
+
+                        span {
+                            &.text-light {
+                                color: darken($gray, 15%) !important;
+                            }
+                        }
+                    }
+                }
+
+                h4 {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    color: lighten($gray, 18%) !important;
+
+                    span {
+                        color: darken($gray, 100%) !important;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            p {
+                display: flex;
+                align-items: flex-end;
+                color: lighten($gray, 0%);
+                font-size: 1.15rem;
+                font-weight: 400;
+                letter-spacing: .5px;
+                margin: 0px;
+                line-height: 23px;
+
+                span {
+                    &.ml-auto {
+                        margin-left: auto;
+                        font-size: 1.55rem;
+                        font-weight: 500;
+                        //                        color: $theme-color_green;
+
+                        ion-icon {
+                            position: relative;
+                            top: 2px;
+                            font-size: 1.3em;
+                            margin-left: 9px;
+                        }
+
+                        &.text-orange {
+                            color: $theme-color !important;
+                        }
+
+                        &.text-green {
+                            color: $theme-color_green !important;
+                        }
+                    }
+                }
+
+                &.order-code {
+                    position: relative;
+                    top: 7px;
+                }
+            }
+        }
+    }
+
+    .empty-view {
+        width: 200px;
+        margin: auto;
+        height: 200px;
+        top: 10%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10%;
+
+        img {
+            width: 100px;
+            margin: auto;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 50px;
+
+            span {
+                display: unset !important;
+            }
+        }
+    }
+
+
+}

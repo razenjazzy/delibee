@@ -1,0 +1,33 @@
+<ion-content>
+    <div id="recaptcha-container"></div>
+    <div class="logo bg-img">
+        <img src="assets/imgs/logo.png">
+    </div>
+    <div class="page_title">
+        <!--		<ion-icon (click)="signin()" name="ios-arrow-back-outline"></ion-icon>-->
+        <div class="title">
+            {{"verification_code" | translate}}
+        </div>
+    </div>
+    <p text-center text-center padding-top padding-bottom margin-top>
+        {{"verify_code_text" | translate}}<br> {{phoneNumberFull}}</p>
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-input type="number" placeholder="{{'enter_otp' | translate}}" [(ngModel)]="otp"></ion-input>
+            </ion-item>
+        </ion-list>
+        <button ion-button round full class="btn" (click)="verify()" [disabled]="otpNotSent || otp==''">
+            {{"confirm" | translate}}
+        </button>
+
+        <ion-row padding-top>
+            <ion-col col-6>
+                <p>{{minutes}}:{{seconds}} left</p>
+            </ion-col>
+            <ion-col col-6>
+                <p text-end class="text-orange" (click)="sendOTP()">{{"resend" | translate}}</p>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

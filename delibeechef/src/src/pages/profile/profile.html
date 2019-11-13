@@ -1,0 +1,108 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{"profile" | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <div class="logo bg-light" (click)="openAction()">
+        <img [src]="storeRequest.image_url" class="store-image" *ngIf="storeRequest.image_url">
+        <div *ngIf="!storeRequest.image_url" class="text">
+            <ion-icon name="md-camera" text-center></ion-icon>
+            <h2>{{"upload_items_image" | translate}}</h2>
+        </div>
+        <input id="pres-image" style="display: none" (change)="changeFileListener($event)" type="file">
+    </div>
+
+    <div class="form">
+        <ion-list no-lines>
+            <h2 class="text-green">{{"restro_details" | translate}}</h2>
+            <ion-item>
+                <ion-label floating>{{"restaurant_identity" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="storeRequest.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"sweet_tagline" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="storeRequest.tagline"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"email_address" | translate}}</ion-label>
+                <ion-input type="email" [(ngModel)]="user.email" disabled="true"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"phone_number" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="user.mobile_number" disabled="true"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-lines>
+            <h2 class="text-green">{{"opening_hours" | translate}}</h2>
+            <ion-item>
+                <ion-label floating>{{"ppening_time" | translate}}</ion-label>
+                <ion-datetime pickerFormat="HH:mm:ss" displayFormat="HH:mm:ss" [(ngModel)]="storeRequest.opens_at">
+                </ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"closing_time" | translate}}</ion-label>
+                <ion-datetime pickerFormat="HH:mm:ss" displayFormat="HH:mm:ss" [(ngModel)]="storeRequest.closes_at">
+                </ion-datetime>
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-lines>
+            <h2 class="text-green">{{"delivery" | translate}}</h2>
+            <ion-item>
+                <ion-label floating>{{"delivery_time_in_minutes" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="storeRequest.delivery_time"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"delivery_fee" | translate}}</ion-label>
+                <ion-input type="number" [(ngModel)]="storeRequest.delivery_fee"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{"minimum_order" | translate}}</ion-label>
+                <ion-input type="number" [(ngModel)]="storeRequest.minimum_order"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-lines class="toggle-box">
+            <h2 class="text-green">
+                <span class="text-ellipsis ">{{"pre_order_facility" | translate}}</span>
+                <span class="ml-auto">
+                    <ion-toggle [(ngModel)]="storeRequest.preorder"></ion-toggle>
+                </span>
+            </h2>
+        </ion-list>
+
+        <ion-list no-lines class="address">
+            <ion-item>
+                <ion-label floating>{{'enter_address' | translate}}</ion-label>
+                <ion-select [(ngModel)]="storeRequest.area" interface="popover" class="text-thime"
+                    placeholder="Choose your area">
+                    <ion-option [value]="area.name" *ngFor="let area of areas">{{area.name}}
+                    </ion-option>
+                </ion-select>
+            </ion-item>
+            <h2 class="text-green">{{"restaurant_address" | translate}}</h2>
+            <ion-textarea [(ngModel)]="storeRequest.address" placeholder="{{'enter_address' | translate}}">
+            </ion-textarea>
+            <h3 class="text-green" (click)="checkForLocation()">{{"point_map" | translate}}</h3>
+        </ion-list>
+
+        <ion-list no-lines class="other_restro_details">
+            <h2 class="text-green">{{"other_restro_details" | translate}}</h2>
+            <ion-item>
+                <!--<ion-label floating>Enter details heare</ion-label>-->
+                <ion-textarea placeholder="{{'enter_details_heare' | translate}}" type="text"
+                    [(ngModel)]="storeRequest.details"></ion-textarea>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button ion-button full class="btn-orange btn-shadow btn " (click)="saveStoreDetails()">
+            {{"update_info" | translate}}
+        </button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"earnings" | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+  <ion-list no-lines>
+    <ion-item text-center class="top-header">
+      <h2 class="text-ellipsis">{{"total_earning_for" | translate}}</h2>
+      <h2 class="text-ellipsis">{{earning.last_earning_date | date:'MMM d, y, h:mm:ss a'}}</h2>
+      <h3 class="text-orange text-ellipsis">{{currency}} {{earning.total_earnings}}</h3>
+    </ion-item>
+    <h2 class="text-ellipsis heading" *ngIf="earnings.length">{{"earning_details" | translate}}</h2>
+    <ion-item *ngFor="let earning of earnings">
+      <ion-avatar item-start>
+          <img [src]="earning.order.store.image_url">
+      </ion-avatar>
+      <h2 class="">
+        <span class="name text-ellipsis">{{"order" | translate}} #{{earning.order.id}}</span>
+        <span class="text-orange">{{currency}} {{earning.order.total}}</span>
+      </h2>
+      <p class="text-ellipsis">{{earning.created_at}}
+        <span>{{"profit" | translate}} {{currency}} {{earning.amount}}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

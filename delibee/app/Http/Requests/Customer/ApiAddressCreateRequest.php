@@ -26,6 +26,7 @@ class ApiAddressCreateRequest extends FormRequest
         return [
             'title' => 'required|string',
             'address' => 'required|string',
+            'area' => 'required|string',
             'latitude' => 'numeric',
             'longitude' => 'numeric',
         ];
