@@ -43,8 +43,9 @@ export class ProfilePage {
     let savedStore: StoreResponse = JSON.parse(window.localStorage.getItem(Constants.STORE_DETAILS));
     if (savedStore && savedStore.name && savedStore.name.length) {
       this.storeRequest = savedStore;
+    } else {
+      this.storeRequest.image_url = "../../assets/imgs/blank.png";
     }
-    this.storeRequest.image_url = "../../assets/imgs/blank.png";
   }
 
   ionViewWillLeave() {
