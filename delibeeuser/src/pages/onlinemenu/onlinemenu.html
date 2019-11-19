@@ -7,8 +7,8 @@
         </ion-title>
         <span float-end>
             <span class="cart" (click)="cart()">
-                <ion-icon name="md-cart" class="text-white"></ion-icon>
-                <ion-badge *ngIf="cartSize" class="">{{cartSize}}</ion-badge>
+                <ion-icon name="md-cart" class="text-black"></ion-icon>
+                <ion-badge style="background: #020202 !important;" *ngIf="cartSize" class="cart-font-size">{{cartSize}}</ion-badge>
             </span>
         </span>
     </ion-navbar>
@@ -25,7 +25,7 @@
             <span>{{currency}} {{priceToShow}}</span>
         </ion-card-header>
         <p>{{item.quantity}} {{"units" | translate}}</p>
-        <p>{{item.detail}}</p>
+        <h3>{{item.detail}}</h3>
     </ion-card>
 
     <ion-list *ngIf="item.menu_item_groups && item.menu_item_groups.length" no-lines class="option">

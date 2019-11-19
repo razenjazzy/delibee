@@ -206,7 +206,7 @@ export class AdditemPage {
       if (strArr[0] == 'image') {
         this.progress = true;
         console.log("file picked:", this.fileToUpload);
-        this.global.presentLoading("Uploading image");
+        // this.global.presentLoading("Uploading image");
         this.startUploadFile();
       }
     }

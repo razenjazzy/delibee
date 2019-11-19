@@ -9,8 +9,8 @@
             <ion-icon *ngIf="user" name="md-heart" class="text-white" [ngClass]="{'favorite':favorite==1}" padding-right
                 (click)="toggleFavorite()"></ion-icon>
             <span class="cart" (click)="cart()">
-                <ion-badge *ngIf="cartSize" class="">{{cartSize}}</ion-badge>
-                <ion-icon name="md-cart" class="text-white"></ion-icon>
+                <ion-badge style="background: #020202 !important;" class="cart-size-font" *ngIf="cartSize">{{cartSize}}</ion-badge>
+                <ion-icon name="md-cart" class="text-black"></ion-icon>
             </span>
         </span>
     </ion-navbar>
@@ -84,7 +84,7 @@
                                         <img [src]="item.image_url">
                                     </ion-thumbnail>
                                     <h2>{{item.title}}</h2>
-                                    <p>{{item.quantity}} {{"units" | translate}}</p>
+                                    <p style="font-weight: bold; color: #ffd11a;">{{item.quantity}} {{"units" | translate}}</p>
                                     <p>{{item.detail}}</p>
                                     <h3 item-end>{{currency}} {{item.price}}<br>
                                         <ion-icon name="md-add" class="add" *ngIf="!item.added"
@@ -230,7 +230,7 @@
     <ion-row (click)="cart()">
         <ion-col col-7>
             <ion-icon name="md-cart" class="text-white">
-                <ion-badge color="secondary">{{cartSize}}</ion-badge>
+                <ion-badge class="cart-size-font" color="primary">{{cartSize}}</ion-badge>
             </ion-icon>
             <h3>
                 {{"cart_items" | translate}}

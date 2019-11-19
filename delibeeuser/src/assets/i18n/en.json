@@ -8,6 +8,7 @@
     "card_update1": "Added in cart",
     "card_update2": "Updated in cart",
     "item_empty": "Item unavailable to order.",
+    "units": "unit(s) available",
     "loading_orders": "Loading orders",
     "loading_products": "Loading items",
     "total": "Total",
