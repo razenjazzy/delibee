@@ -38,7 +38,7 @@ export class AddressPage {
     if (savedLocation) {
       this.address.latitude = Number(savedLocation.lat);
       this.address.longitude = Number(savedLocation.lng);
-      this.address.area = savedLocation.area;
+      // this.address.area = savedLocation.area;
       this.address.address = savedLocation.name;
     }
     window.localStorage.removeItem(Constants.KEY_LOCATION_ADDRESS);
@@ -57,6 +57,7 @@ export class AddressPage {
   }
 
   saveAddress() {
+    console.log(this.address);
     if (!this.address.title) {
       this.translate.get('address_title_err').subscribe(value => {
         this.global.showToast(value);

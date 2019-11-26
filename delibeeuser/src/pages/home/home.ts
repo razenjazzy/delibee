@@ -40,6 +40,7 @@ export class HomePage {
   private pageNo = 1;
   private categoryId = -1;
   private currency: string = "";
+  private favorite: number;
   private user: User;
 
   constructor(private navCtrl: NavController, private service: ClientService, private global: Global,
@@ -236,7 +237,7 @@ export class HomePage {
     }, err => {
       console.log('tougleFavourite err', err);
     }));
-    // this.stores[index].favourite=this.global.toggleFavorite(this.stores[index]);
+    this.stores[index].favourite = Number (this.global.toggleFavorite(this.stores[index]));
   }
 
   refine() {

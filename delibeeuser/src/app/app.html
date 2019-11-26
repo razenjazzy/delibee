@@ -69,13 +69,13 @@
                 <h2 class="text-white">{{"rate" | translate}}</h2>
                 <p>{{"rate_text" | translate}}</p>
             </ion-item>
-            <!-- <ion-item menuClose (click)="language()">
+            <ion-item menuClose (click)="language()">
                 <ion-avatar item-start text-center>
                     <ion-icon name="md-cog"></ion-icon>
                 </ion-avatar>
                 <h2 class="text-white">{{"language" | translate}}</h2>
                 <p>{{"language_text" | translate}}</p>
-            </ion-item> -->
+            </ion-item>
             <ion-item *ngIf="user" menuClose (click)="phonenumberPage()">
                 <ion-avatar item-start text-center>
                     <ion-icon name="md-power"></ion-icon>

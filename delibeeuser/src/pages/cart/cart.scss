@@ -148,7 +148,13 @@ page-cart {
             }
         }
 
+        .button-center {
+            text-align: center;
+        }
+
         button {
+            background-color: black !important;
+
             .f3 {
                 font-weight: 300 !important;
             }
@@ -187,7 +193,7 @@ page-cart {
                     top: -7px;
                     right: -16px;
                     text-align: center;
-                    color: white;
+                    color: black;
                     background: $theme-color_green;
                 }
             }

@@ -24,6 +24,7 @@
             </ion-thumbnail>
             <h3>{{item.item.title}}</h3>
             <p style="font-weight: bold; color: #ffd11a;">{{item.item.quantity}} {{"units" | translate}}</p>
+            <p></p>
             <ion-row>
                 <ion-col col-5>
                     <div class="add-remove">
@@ -48,7 +49,12 @@
     <ion-toolbar *ngIf="cartItems && cartItems.length">
         <div class="fixd-bottom">
             <div class="ditails">
-                <p text-center class="text-promo" (click)="codePage()">{{"add_promo" | translate}}</p>
+                <div class="button-center">
+                    <button ion-button style="color: white !important;" shape="round" class="text-promo" 
+                    (click)="codePage()">{{"add_promo" | translate}}
+                </button>
+                </div>
+                <br>
                 <h2 class="sub-total">{{"sub_total" | translate}} <span>{{currency}} {{subTotal}}</span></h2>
                 <h2>{{"service_fee" | translate}}
                     <span *ngIf="service" style="margin-left:5px">({{tax_in_percent}}%)</span>
@@ -64,7 +70,7 @@
             <button ion-button full class="btn-orange btn" (click)="proceedCheckout()">
                 <span class="cart">
                     <ion-icon name="md-cart" class="text-white"></ion-icon>
-                    <ion-badge style="background: #020202 !important;" class="cart-size-font">{{cartItems.length}}</ion-badge>
+                    <ion-badge class="cart-size-font" color="primary">{{cartItems.length}}</ion-badge>
                 </span>
                 <span class="f-3 checkout_text">{{"checkout" | translate}}</span>
                 <span class="amount f-3"><strong>{{currency}} {{total}}</strong>

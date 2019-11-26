@@ -7,14 +7,14 @@
         </ion-title>
         <span float-end>
             <span class="cart" (click)="cart()">
+                <ion-badge style="background: #020202 !important;" class="cart-size-font" *ngIf="cartSize">{{cartSize}}</ion-badge>
                 <ion-icon name="md-cart" class="text-black"></ion-icon>
-                <ion-badge style="background: #020202 !important;" *ngIf="cartSize" class="cart-font-size">{{cartSize}}</ion-badge>
             </span>
         </span>
     </ion-navbar>
     <div class="banner">
         <div class="img-box">
-            <img [src]="store.image_url">
+            <img [src]="item.image_url">
         </div>
     </div>
 </ion-header>
@@ -25,6 +25,7 @@
             <span>{{currency}} {{priceToShow}}</span>
         </ion-card-header>
         <p>{{item.quantity}} {{"units" | translate}}</p>
+        <br>
         <h3>{{item.detail}}</h3>
     </ion-card>
 
@@ -61,9 +62,9 @@
             <ion-row>
                 <ion-col col-5>
                     <div class="add-remove">
-                        <ion-icon name="md-remove" class="bg-green" (click)="quantDown()"></ion-icon>
+                        <ion-icon name="md-remove" style="color: black !important;" class="bg-green" (click)="quantDown()"></ion-icon>
                         <h2 text-center>{{quantity}}</h2>
-                        <ion-icon name="md-add" class="bg-green" (click)="quantUp()"></ion-icon>
+                        <ion-icon name="md-add" style="color: black !important;" class="bg-green add" (click)="quantUp()"></ion-icon>
                     </div>
                 </ion-col>
                 <ion-col col-7>

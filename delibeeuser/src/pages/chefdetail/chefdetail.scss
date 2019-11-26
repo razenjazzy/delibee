@@ -4,6 +4,21 @@ page-chefdetail {
             position: absolute;
             z-index: 1;
         }
+        
+        ion-badge {
+            border-radius: 50%;
+            font-size: .9rem !important;
+            font-weight: 400;
+            height: 16px;
+            width: 16px;
+            text-align: center;
+            padding: 0;
+            line-height: 16px;
+            position: absolute;
+            margin-top: -.9rem;
+            right: -8px;
+            color: white;
+        }
 
         .banner {
             background: $white;
@@ -234,7 +249,7 @@ page-chefdetail {
                                     height: 30px;
                                     background: $theme-color_green;
                                     border-radius: 50%;
-                                    color: $white;
+                                    // color: $white;
                                     font-size: 1.5rem;
                                     margin-top: 5px;
 

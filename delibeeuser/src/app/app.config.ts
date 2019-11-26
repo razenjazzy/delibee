@@ -24,8 +24,7 @@ export interface AppConfig {
 
 export const BaseAppConfig: AppConfig = {
   appName: "DeliBee",
-  // apiBase: "http://54.213.204.238/",
-  apiBase: "http://54.245.170.168/",
+  apiBase: "http://54.213.204.238/",
   googleApiKey: "AIzaSyDBZjAUb_BqMgaE6ZanWXaSgWP_VX-NynQ",
   stripeKey: "",
   enableChooseDelivery: false,
@@ -33,12 +32,18 @@ export const BaseAppConfig: AppConfig = {
     code: 'en',
     name: 'English'
   }, {
-    code: 'ar',
-    name: 'Arabic'
-  }, {
-    code: 'nl',
-    name: 'Dutch'
-  }],
+    code: 'bn',
+    name: 'Bangla'
+  }
+  // ,{
+  //   code: 'ar',
+  //   name: 'Arabic'
+  // }, {
+  //   code: 'nl',
+  //   name: 'Dutch'
+  // 
+  ],
+
   firebaseConfig: {
     webApplicationId: "175133208389-6la29vj3suksjhiutsp2v0dk866veard.apps.googleusercontent.com",
     apiKey: "AIzaSyDBZjAUb_BqMgaE6ZanWXaSgWP_VX-NynQ",

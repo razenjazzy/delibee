@@ -70,12 +70,12 @@
           <ion-card-content>
             <ion-card-title class="text-white fw-5">
               <span>{{store.name}}</span>
-              <!-- <ion-icon *ngIf="user" name="md-heart" [ngClass]="store.favourite==1 ? 'favourite' : 'text-white'"
-                (click)="toggleFavorite(i)"></ion-icon> -->
+              <ion-icon *ngIf="user" name="md-heart" [ngClass]="store.favourite==1 ? 'favourite' : 'text-white'"
+                (click)="toggleFavorite(i)"></ion-icon>
             </ion-card-title>
             <p class="fw-3">{{store.area}}</p>
           </ion-card-content>
-          <ion-row>
+          <!-- <ion-row>
             <ion-col col-4>
               <h5 class="text-light">{{"avg_dlvr_time" | translate}}</h5>
               <h6 class="text-dark">{{store.delivery_time}}</h6>
@@ -88,7 +88,7 @@
               <h5 class="text-light">{{"dlvr_fee" | translate}}</h5>
               <h6 class="text-dark">{{currency}} {{store.delivery_fee}}</h6>
             </ion-col>
-          </ion-row>
+          </ion-row> -->
         </ion-card>
       </div>
     </ion-item>
