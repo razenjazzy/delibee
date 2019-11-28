@@ -29,6 +29,9 @@ Route::namespace('Api')->name('api.')->group(function () {
             Route::get('/categories/all', 'CategoryController@allCategories');
             Route::apiResource('categories', 'CategoryController');
 
+            // coupons
+            Route::apiResource('coupons', 'CouponController');
+
             // user
             Route::get('/users/roles', 'UserController@roles');
             Route::apiResource('users', 'UserController');
