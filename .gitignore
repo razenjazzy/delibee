@@ -38,3 +38,15 @@ _ide_helper.php
 .rocketeer/
 
 public/storage
+delibeechef/platforms/
+delibeeuser/www/
+delibeeuser/typings/
+delibeeuser/.vscode/
+delibeechef/www/
+delibeechef/plugins/
+delibeechef/.vscode/
+delibeedelivery/.vscode/
+delibeedelivery/typings/
+delibeechef/.sourcemaps/main.js.map
+delibeechef/package-lock.json
+delibeeuser/package-lock.json
