@@ -29,7 +29,7 @@ class ApiMenuItemCreateRequest extends FormRequest
             'specification' => 'required|string',
             'image_url' => 'required|string',
             'price' => 'required|numeric',
-            'quantity' => 'required|integar',
+            'quantity' => 'required|integer',
             'delivery_fee' => 'integer',
             'is_available' => 'required|boolean',
             'is_non_veg' => 'required|boolean',
