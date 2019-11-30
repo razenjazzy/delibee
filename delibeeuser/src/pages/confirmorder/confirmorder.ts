@@ -83,7 +83,6 @@ export class ConfirmorderPage {
       this.discount = (this.coupon ? this.coupon.type == 'percent' ? (sum * Number(this.coupon.reward) / 100) : Number(this.coupon.reward) : 0);
       console.log("discount is:--" + this.discount);
       offerAmmount = sum - this.discount;
-      this.couponApplied = true;
       this.total = Number((offerAmmount + this.totalServiceFee + this.delivery_fee).toFixed(2));
       console.log("total is: --" + this.total)
     }
