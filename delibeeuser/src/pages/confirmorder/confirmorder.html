@@ -46,9 +46,9 @@
                         <small>{{"dlvr_fee" | translate}}</small>
                         <span>{{currency}} {{delivery_fee}}</span>
                     </p>
-                    <p *ngIf="couponApplied" text-end>
-                        <small>{{"coupon_applied" | translate}}</small>
-                        <span>- {{currency}} {{couponAmount}}</span>
+                    <p *ngIf="order.discount && order.discount > 0" text-end>
+                        <small>{{"discount" | translate}}</small>
+                        <span>{{currency}} {{order.discount}}</span>
                     </p>
                 </div>
                 <div class="grend-total ">
