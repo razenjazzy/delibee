@@ -63,6 +63,9 @@
                 <h2 *ngIf="delivery_fee && delivery_fee > 0">{{"dlvr_fee" | translate}}
                     <span>{{currency}} {{delivery_fee}}</span>
                 </h2>
+                <h2 *ngIf="discount && discount > 0">{{"discount" | translate}}
+                    <span>{{currency}} {{discount}}</span>
+                </h2>
                 <h2 *ngIf="couponApplied">{{"coupon_applied" | translate}}
                     <span>- {{currency}} {{couponAmount}}</span>
                 </h2>
