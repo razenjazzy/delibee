@@ -47,10 +47,9 @@ export class CodePage {
 						window.localStorage.removeItem(Constants.SELECTED_COUPON);
 						this.translate.get('coupon_expired').subscribe(text => {
 							this.global.showToast(text);
-						})
-						// this.global.showToast('Coupon expired');
+						});
+						this.dismiss(null);
 					}
-					this.dismiss();
 				}
 			}, err => {
 				this.global.dismissLoading();
@@ -63,7 +62,7 @@ export class CodePage {
 		}
 	}
 
-	dismiss() {
-		this.viewCtrl.dismiss();
+	dismiss(coupon) {
+		this.viewCtrl.dismiss(coupon);
 	}
 }
