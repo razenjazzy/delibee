@@ -80,15 +80,11 @@ export class ConfirmorderPage {
     if (couponCode) {
       this.coupon = couponCode;
       this.couponAmount = Number(this.coupon.reward).toFixed(2) + (this.coupon.type == 'percent' ? '%' : '');
-      this.discount = (this.coupon ? this.coupon.type == 'percent' ? (sum * Number(this.coupon.reward) / 100) : Number(this.coupon.reward) : 0);
-      console.log("discount is:--" + this.discount);
-      offerAmmount = sum - this.discount;
-      this.couponApplied = true;
+      let discount = (this.coupon ? this.coupon.type == 'percent' ? (sum * Number(this.coupon.reward) / 100) : Number(this.coupon.reward) : 0);
+      offerAmmount = sum - discount;
       this.total = Number((offerAmmount + this.totalServiceFee + this.delivery_fee).toFixed(2));
-      console.log("total is: --" + this.total)
-    }
-    else
-      this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
+    } else 
+        this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
   }
 
   createOrder() {
@@ -151,7 +147,7 @@ export class ConfirmorderPage {
 
   quantityUpdated(item) {
     let subscription: Subscription = this.service.updateItem(window.localStorage.getItem(Constants.KEY_TOKEN), item.id, item).subscribe(res => {
-      console.log('created order', res);
+      console.log('quantity updated', res);
     }, err => {
       this.global.dismissLoading();
       console.log('cat_err', err);

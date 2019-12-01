@@ -29,6 +29,9 @@ Route::namespace('Api')->name('api.')->group(function () {
             Route::get('/categories/all', 'CategoryController@allCategories');
             Route::apiResource('categories', 'CategoryController');
 
+            // coupons
+            Route::apiResource('coupons', 'CouponController');
+
             // user
             Route::get('/users/roles', 'UserController@roles');
             Route::apiResource('users', 'UserController');
@@ -122,7 +125,7 @@ Route::namespace('Api')->name('api.')->group(function () {
         Route::get('/menuitem/{menuItem}', 'MenuItemController@show')->name('menuitem.show');
         Route::post('/menuitem/{menuItem}', 'MenuItemController@update')->name('menuitem.update');
         Route::post('/menuitem/{menuItem}/update-status', 'MenuItemController@updateStatus')->name('menuitem.updateStatus');
-        Route::put('/menuitem/{menuItem}/update-quantity', 'MenuItemController@updateQuantity')->name('menuitem.updateQuantity');
+        Route::post('/menuitem/{menuItem}/update-quantity', 'MenuItemController@updateQuantity')->name('menuitem.updateQuantity');
         Route::delete('/menuitem/{menuItem}', 'MenuItemController@destroy')->name('menuitem.destroy');
 
         Route::get('/bank-detail', 'BankDetailController@show')->name('bankdetail.show');
@@ -160,6 +163,7 @@ Route::namespace('Api')->name('api.')->group(function () {
             Route::post('/rating/{store}', 'RatingController@store')->name('rating.store');
 
             // check coupon validity
+            Route::get('/coupons', 'CouponController@index')->name('coupon.index');
             Route::get('/coupon-validity', 'CouponController@couponValidity')->name('coupon.validity');
 
             /* address related */

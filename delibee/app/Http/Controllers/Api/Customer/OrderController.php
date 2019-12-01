@@ -138,7 +138,7 @@ class OrderController extends Controller
         $requestFields['taxes'] = $tax;
 
         // apply coupon
-        // $requestFields['discount'] = 0; // reset discount to 0, since client may already have set this field
+        $requestFields['discount'] = 0; // reset discount to 0, since client may already have set this field
         if($coupon !== null) {
             $discount = 0;
             if($coupon->type == 'fixed') {
