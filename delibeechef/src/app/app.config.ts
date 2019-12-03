@@ -23,7 +23,7 @@ export interface AppConfig {
 
 export const BaseAppConfig: AppConfig = {
   appName: "DeliBee Home",
-  apiBase: "http://54.245.170.168/",
+  apiBase: "http://54.213.204.238/",
   googleApiKey: "AIzaSyDBZjAUb_BqMgaE6ZanWXaSgWP_VX-NynQ",
   stripeKey: "",
   availableLanguages: [{

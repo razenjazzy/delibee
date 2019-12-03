@@ -42,7 +42,8 @@ export class CodePage {
 					})
 				} else {
 					if (new Date(coupon.expires_at) > new Date()) {
-						window.localStorage.setItem(Constants.SELECTED_COUPON, JSON.stringify(coupon));
+						//window.localStorage.setItem(Constants.SELECTED_COUPON, JSON.stringify(coupon));
+						this.dismiss(coupon);
 					} else {
 						window.localStorage.removeItem(Constants.SELECTED_COUPON);
 						this.translate.get('coupon_expired').subscribe(text => {

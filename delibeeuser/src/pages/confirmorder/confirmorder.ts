@@ -11,6 +11,7 @@ import { Coupon } from '../../models/coupon.models';
 import { TranslateService } from '@ngx-translate/core';
 import { Helper } from '../../models/helper';
 import { CartPage } from '../cart/cart';
+import { CouponUser } from '../../models/coupon-user.models';
 
 @Component({
   selector: 'page-confirmorder',
@@ -32,7 +33,7 @@ export class ConfirmorderPage {
   private couponAmount: string;
   private discount: number = 0;
   private coupon: Coupon;
-  private couponApplied: boolean = false;
+  private couponUser: CouponUser;
   private stripeCardTokenId: string;
 
   constructor(private translate: TranslateService, private navCtrl: NavController,
@@ -83,8 +84,7 @@ export class ConfirmorderPage {
       let discount = (this.coupon ? this.coupon.type == 'percent' ? (sum * Number(this.coupon.reward) / 100) : Number(this.coupon.reward) : 0);
       offerAmmount = sum - discount;
       this.total = Number((offerAmmount + this.totalServiceFee + this.delivery_fee).toFixed(2));
-    } else 
-        this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
+    } else this.total = Number((sum + this.totalServiceFee + this.delivery_fee).toFixed(2));
   }
 
   createOrder() {
@@ -136,6 +136,12 @@ export class ConfirmorderPage {
           break;
         }
         this.quantityUpdated(x.item);
+        if (this.coupon) {
+          this.couponUser = new CouponUser();
+          this.couponUser.coupon_id = this.coupon.id;
+          console.log('Coupon user', this.couponUser);
+          this.couponUserCreated(this.couponUser);
+        }
       }
       this.orderCreated(res.id);
     }, err => {
@@ -150,10 +156,20 @@ export class ConfirmorderPage {
       console.log('quantity updated', res);
     }, err => {
       this.global.dismissLoading();
-      console.log('cat_err', err);
+      console.log('quantity not updated', err);
     });
     this.subscriptions.push(subscription);
 
+  }
+
+  couponUserCreated(couponUser) {
+    let subscription: Subscription = this.service.postCoupon(couponUser).subscribe(res => {
+      console.log('coupon user created', res);
+    }, err => {
+      this.global.dismissLoading();
+      console.log('coupon user not created', err);
+    });
+    this.subscriptions.push(subscription);
   }
 
   orderCreated(orderId) {

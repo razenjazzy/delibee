@@ -12,7 +12,7 @@
                     <h2 class="text-ellipsis">{{order.user.name}}</h2>
                 </ion-col>
                 <ion-col col-4>
-                    <h3 text-center> {{currency}} {{order.total}}</h3>
+                    <h3 text-center> {{currency}} {{order.subtotal}}</h3>
                 </ion-col>
                 <ion-col col-4 text-end>
                     <h4>{{"payment_by" | translate}}<span> {{getPaymentMethodName(order.id)}} </span></h4>
@@ -28,7 +28,7 @@
         <ion-item>
             <h2 *ngFor="let item of order.orderitems">
                 <span class="text-ellipsis">{{item.menuitem.title}}</span>
-                <small>{{item.quantity}} x {{currency}} {{item.total}}</small>
+                <small>{{item.quantity}} x {{currency}} {{item.menuitem.price}}</small>
                 <span class="ml-auto">{{currency}} {{item.total}}</span>
             </h2>
             <h2 *ngIf="order.special_instructions && order.special_instructions.length">

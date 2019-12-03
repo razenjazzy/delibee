@@ -24,6 +24,7 @@ import { Review } from '../models/review.models';
 import { PaymentMethod } from '../models/payment-methods.models';
 import { SupportRequest } from '../models/support-request.models';
 import { User } from '../models/user.models';
+import { CouponUser } from '../models/coupon-user.models';
 
 @Injectable()
 export class ClientService {
@@ -190,6 +191,13 @@ export class ClientService {
   public postReview(review, id): Observable<Review> {
     const myHeaders = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Bearer ' + window.localStorage.getItem(Constants.KEY_TOKEN) });
     return this.http.post<Review>(this.config.apiBase + 'api/customer/rating/' + id, review, { headers: myHeaders }).concatMap(data => {
+      return Observable.of(data);
+    });
+  }
+
+  public postCoupon(obj): Observable<CouponUser> {
+    const myHeaders = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Bearer ' + window.localStorage.getItem(Constants.KEY_TOKEN) });
+    return this.http.post<CouponUser>(this.config.apiBase + 'api/customer/coupon-user', obj, { headers: myHeaders }).concatMap(data => {
       return Observable.of(data);
     });
   }

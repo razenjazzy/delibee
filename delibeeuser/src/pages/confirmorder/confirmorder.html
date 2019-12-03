@@ -48,7 +48,7 @@
                     </p>
                     <p *ngIf="order.discount && order.discount > 0" text-end>
                         <small>{{"discount" | translate}}</small>
-                        <span>{{currency}} {{order.discount}}</span>
+                        <span>- {{currency}} {{order.discount}}</span>
                     </p>
                 </div>
                 <div class="grend-total ">
